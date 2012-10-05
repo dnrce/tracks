@@ -4,8 +4,9 @@ gem 'rails'
 
 # you may comment out the database driver you will not be using.
 # This will prevent a native build of the driver. Building native drivers is not always possible on all hosters
-gem "sqlite3"
-gem "mysql2"
+group :production do
+  gem "pg"
+end
 
 gem "RedCloth"
 gem "formatize"
@@ -47,6 +48,7 @@ group :development do
   gem "yard"
   gem "tolk"
   gem "bullet"
+  gem "sqlite3"
 end
 
 group :test do
