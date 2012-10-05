@@ -157,7 +157,7 @@ module LoginSystem
   # a popup window might just close itself for instance
   def access_denied
     respond_to do |format|
-      format.html { redirect_to login_path }
+      format.html { redirect_to signup_path }
       format.m { redirect_to login_path(:format => 'm') }
       format.js { render :partial => 'login/redirect_to_login' }
       format.xml { basic_auth_denied }
