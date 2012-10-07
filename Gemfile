@@ -6,6 +6,7 @@ gem 'rails'
 # This will prevent a native build of the driver. Building native drivers is not always possible on all hosters
 group :production do
   gem "pg"
+  gem "thin"
 end
 
 gem "RedCloth"
