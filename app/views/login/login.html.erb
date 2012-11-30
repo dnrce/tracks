@@ -25,4 +25,8 @@
         </table>
       <% end %>
   </div>
+  <% if SITE_CONFIG['open_signups'] %>
+  <%= link_to(t('users.signup_new_user'), signup_path) %>
+  <% end %>
 </div>
+
