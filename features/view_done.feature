@@ -1,7 +1,7 @@
 Feature: Show done
   In order to see what I have completed
   As an user
-  I want see my done todos
+  I want to see my done todos
 
   Background:
     Given the following user record
@@ -63,7 +63,7 @@ Feature: Show done
     Given I have 50 completed todos with a note in project "test project" in context "@pc" with tags "starred"
     When I go to the <page>
     Then I should see the page selector
-    When I follow "2"
+    When I select the second page
     Then I should be on the <page>
     And the page should be "2"
 
@@ -90,7 +90,7 @@ Feature: Show done
     When I follow "Show all"
     Then I should see the page selector
     And I should see "40 (1-20)"
-    When I follow "2"
+    When I select the second page
     Then I should be on the done projects page
     And the page should be "2"
 
@@ -109,7 +109,7 @@ Feature: Show done
     And I follow "Show all"
     Then I should see the page selector
     And I should see "40 (1-20)"
-    When I follow "2"
+    When I select the second page
     Then I should be on the done recurring todos page
     And the page should be "2"
 
