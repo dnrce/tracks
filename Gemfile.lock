@@ -221,7 +221,7 @@ DEPENDENCIES
   mongrel (>= 1.2.0.pre2)
   pg
   rack-mini-profiler
-  rails (>= 3.2.11)
+  rails (= 3.2.11)
   rails_autolink
   sanitize
   sass-rails
