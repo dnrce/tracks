@@ -3,7 +3,7 @@ module Tracks
   class Config
     
     def self.salt
-       SITE_CONFIG['salt']
+       ENV['TRACKS_SALT']
     end
 
     def self.auth_schemes

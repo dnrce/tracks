@@ -1,6 +1,6 @@
 # This is the 'salt' to add to the password before it is encrypted
 # You need to change this to something unique for yourself
-salt: "5lZggABLUaX9SFNjTm1Q2CvTcp37N0cV"
+salt: "change-me"
 
 
 # NOTE: openid, ldap and cas are currently not supported anymore.
