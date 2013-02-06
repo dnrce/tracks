@@ -54,13 +54,10 @@ cs:
         equal_to: "se musí rovnat %{count}"
         even: "must be even"
         exclusion: "je rezervované"
-        greater_than: "musí být větší než %{count}"
-        greater_than_or_equal_to: "musí být větší nebo rovno %{count}"
         inclusion: "není na seznamu"
         invalid: "nesmí obsahovat čárku (',')"
         less_than: "musí být menší než %{count}"
         less_than_or_equal_to: "musí být menší nebo rovno %{count}"
-        not_a_number: "není číslo"
         odd: "must be odd"
         record_invalid: "Problém s daty: %{errors}"
         taken: "už bylo zabráno"
@@ -179,14 +176,6 @@ cs:
     import_errors: "Při importu došlo k chybám"
     import_successful: "Import byl úspěšný."
   date: 
-    abbr_day_names: 
-      - Ne
-      - Po
-      - Út
-      - St
-      - Čt
-      - Pá
-      - So
     abbr_month_names: 
       - ~
       - Led
@@ -214,20 +203,6 @@ cs:
       long: "%B %d, %Y"
       longer: "%A %B %d, %Y"
       short: "%b %d"
-    month_names: 
-      - ~
-      - Leden
-      - Únor
-      - Březen
-      - Duben
-      - Květen
-      - Červen
-      - Červenec
-      - Srpen
-      - Září
-      - Říjen
-      - Listopad
-      - Prosinec
     order: 
       - !ruby/symbol rok
       - ":měsíc"
@@ -270,13 +245,6 @@ cs:
       x_seconds: 
         one: "1 sekunda"
         other: "%{count} sekund"
-    prompts: 
-      day: Den
-      hour: Hodina
-      minute: Minuta
-      month: Měsíc
-      second: Sekunda
-      year: Rok
   errors: 
     user_unauthorized: "401 Neautorizováno: Jen administrátoři smí používat tuto funkci."
   feedlist: 
@@ -418,26 +386,14 @@ cs:
       format: 
         delimiter: ","
         format: "%u%n"
-        precision: 2
         separator: "."
         unit: $
-    format: 
-      delimiter: ","
-      precision: 3
-      separator: "."
     human: 
-      format: 
-        precision: 1
       storage_units: 
-        format: "%n %u"
         units: 
           byte: 
             one: Byte
             other: Bytů
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
   preferences: 
     authentication_header: "Vaše autentizace"
     change_authentication_type: "Změna typu autentizace"
@@ -674,19 +630,15 @@ cs:
   support: 
     array: 
       last_word_connector: ", a "
-      two_words_connector: " a "
-      words_connector: ", "
     select: 
       prompt: "Prosím vyberte"
   time: 
-    am: am
     formats: 
       default: "%a, %d %b %Y %H:%M:%S %z"
       long: "%B %d, %Y %H:%M"
       month_day: "%B %d"
       short: "%d %b %H:%M"
       stats: "%a %d-%m"
-    pm: pm
   todos: 
     action_deferred: "Úkol '%{description}' byl oldožen"
     action_deleted_error: "Nepodařilo se smazat úkol"

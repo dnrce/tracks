@@ -48,11 +48,8 @@ he:
         format: "%{attribute} %{message}"
       messages: 
         accepted: "חייב להתקבל"
-        blank: "לא יכול להיות ריק"
         confirmation: "אינו תואם את האישור"
-        empty: "לא יכול להיות ריק"
         equal_to: "חייב להיות שווה ל %{count}"
-        even: "חייב להיות זוגי"
         exclusion: שמור
         greater_than: "חייב להיות גדול מ %{count}"
         greater_than_or_equal_to: "חייב להיות גודל או שווה ל %{count}"
@@ -60,7 +57,6 @@ he:
         invalid: "לא יכול להכיל את תו (',') הפסיק"
         less_than_or_equal_to: "חייב להיות קטן או שווה ל %{count}"
         not_a_number: "אינו מספר"
-        odd: "חייב להיות אי זוגי"
         record_invalid: "אימות נכשל %{errors}"
         taken: "כבר נמצא בשימוש"
         too_long: "ארוך מדי (לכל היותר %{count} תווים("
@@ -191,10 +187,6 @@ he:
       about_x_years: 
         one: כשנה
         other: "כ-%{count} שנים"
-      almost_x_years: 
-        one: "כמעט שנה"
-        other: "כמעט %{count} שנים"
-      half_a_minute: "חצי דקה"
       less_than_x_minutes: 
         one: "פחות מדקה"
         other: "פחות מ-%{count} דקות"
@@ -205,26 +197,14 @@ he:
         zero: "פחות משנייה"
       over_x_years: 
         one: "מעלה לשנה"
-        other: "מעל %{count} שנים"
       x_days: 
         one: יום
-        other: "%{count} ימים"
       x_minutes: 
         one: דקה
-        other: "%{count} דקות"
       x_months: 
         one: חודש
-        other: "%{count} חודשים"
       x_seconds: 
         one: שנייה
-        other: "%{count} שניות"
-    prompts: 
-      day: יום
-      hour: שעה
-      minute: דקה
-      month: חודש
-      second: שניות
-      year: שנה
   errors: 
     user_unauthorized: "401 לא מאושר: רק משתמשים בדרגת מנהל רשאים להפעיל פעולה זו"
   feedlist: 
@@ -361,20 +341,11 @@ he:
   number: 
     currency: 
       format: 
-        delimiter: ","
         format: "%u%n "
-        separator: "."
-        unit: ₪
-    format: 
-      delimiter: ","
-      separator: "."
     human: 
       storage_units: 
         format: "%u%n"
         units: 
-          byte: 
-            one: בייט
-            other: בתים
           gb: ג'יגהבייט
           kb: "קילו בייט"
           mb: "מגה בייט"

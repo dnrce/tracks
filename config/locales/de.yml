@@ -46,26 +46,6 @@ de:
     errors: 
       full_messages: 
         format: "%{attribute} %{message}"
-      messages: 
-        accepted: "muss akzeptiert werden"
-        blank: "muss ausgefüllt werden"
-        confirmation: "stimmt nicht mit der Bestätigung überein"
-        empty: "muss ausgefüllt werden"
-        equal_to: "muss genau %{count} sein"
-        even: "muss gerade sein"
-        exclusion: "ist nicht verfügbar"
-        greater_than: "muss größer als %{count} sein"
-        greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
-        inclusion: "ist kein gültiger Wert"
-        invalid: "ist nicht gültig"
-        less_than: "muss kleiner als %{count} sein"
-        less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
-        not_a_number: "ist keine Zahl"
-        odd: "muss ungerade sein"
-        taken: "ist bereits vergeben"
-        too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
-        too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
-        wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
       models: 
         project: 
           attributes: 
@@ -74,7 +54,6 @@ de:
               taken: "Projektname existiert bereits"
               too_long: "Projektname muss weniger als 256 Zeichen haben"
       template: 
-        body: "Bitte überprüfen Sie die folgenden Felder:"
         header: 
           one: "Konnte dieses %{model} Objekt nicht speichern: 1 Fehler."
           other: "Konnte dieses %{model} Objekt nicht speichern: %{count} Fehler."
@@ -178,106 +157,35 @@ de:
     import_errors: "Beim Import sind Fehler aufgetreten."
     import_successful: "Import war erfolgreich."
   date: 
-    abbr_day_names: 
-      - So
-      - Mo
-      - Di
-      - Mi
-      - Do
-      - Fr
-      - Sa
-    abbr_month_names: 
-      - ~
-      - Jan
-      - Feb
-      - Mär
-      - Apr
-      - Mai
-      - Jun
-      - Jul
-      - Aug
-      - Sep
-      - Okt
-      - Nov
-      - Dez
-    day_names: 
-      - Sonntag
-      - Montag
-      - Dienstag
-      - Mittwoch
-      - Donnerstag
-      - Freitag
-      - Samstag
     formats: 
-      default: "%d.%m.%Y"
-      long: "%e. %B %Y"
       longer: "%A, %d. %B %Y"
       month_day: "%d. %B"
       only_day: "%e"
-      short: "%e. %b"
-    month_names: 
-      - ~
-      - Januar
-      - Februar
-      - März
-      - April
-      - Mai
-      - Juni
-      - Juli
-      - August
-      - September
-      - Oktober
-      - November
-      - Dezember
-    order: 
-      - !ruby/symbol day
-      - !ruby/symbol month
-      - !ruby/symbol year
   datetime: 
     distance_in_words: 
       about_x_hours: 
         one: "etwa 1 Stunde"
-        other: "etwa %{count} Stunden"
       about_x_months: 
         one: "etwa 1 Monat"
-        other: "etwa %{count} Monate"
       about_x_years: 
         one: "etwa 1 Jahr"
-        other: "etwa %{count} Jahre"
       almost_x_years: 
         one: "fast 1 Jahr"
-        other: "fast %{count} Jahre"
-      half_a_minute: "eine halbe Minute"
       less_than_x_minutes: 
-        one: "weniger als eine Minute"
-        other: "weniger als %{count} Minuten"
         zero: "weniger als 1 Minute"
       less_than_x_seconds: 
         one: "weniger als 1 Sekunde"
-        other: "weniger als %{count} Sekunden"
         zero: "weniger als 1 Sekunde"
       over_x_years: 
         one: "mehr als 1 Jahr"
-        other: "mehr als %{count} Jahre"
       x_days: 
         one: "1 Tag"
-        other: "%{count} Tage"
       x_minutes: 
         one: "1 Minute"
-        other: "%{count} Minuten"
       x_months: 
         one: "1 Monat"
-        other: "%{count} Monate"
       x_seconds: 
         one: "1 Sekunde"
-        other: "%{count} Sekunden"
-    prompts: 
-      day: Tag
-      hour: Stunden
-      minute: Minuten
-      month: Monat
-      second: Sekunden
-      year: Jahr
   errors: 
     user_unauthorized: "401 Unauthorized: Nur administrative Benutzer dürfen auf diese Funktion zugreifen."
   feedlist: 
@@ -420,24 +328,6 @@ de:
         delimiter: ","
         format: "%n%u"
         separator: "."
-        unit: €
-    format: 
-      delimiter: "."
-      precision: 2
-      separator: ","
-    human: 
-      format: 
-        precision: 1
-      storage_units: 
-        format: "%n %u"
-        units: 
-          byte: 
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
   preferences: 
     authentication_header: "Deine Authentifizierung"
     change_authentication_type: "Authentifzierungsart ändern"
@@ -672,22 +562,13 @@ de:
     totals_visible_context_count: "Von diesen sind %{count} sichtbare Kontexte"
     within_one: "Innerhalb von 1"
   support: 
-    array: 
-      last_word_connector: " und "
-      two_words_connector: " und "
-      words_connector: ", "
     select: 
       prompt: "Bitte wählen Sie"
   time: 
-    am: vormittags
     formats: 
-      default: "%A, %d. %B %Y, %H:%M Uhr"
-      long: "%A, %d. %B %Y, %H:%M Uhr"
       month_day: "%d. %B"
-      short: "%d. %B, %H:%M Uhr"
       stats: "%a %d-%m"
       time: "%H:%M"
-    pm: nachmittags
   todos: 
     action_deleted_error: "Fehler beim Löschen der Aufgabe"
     action_deleted_success: "Die nächste Aufgabe erfolgreich gelöscht"

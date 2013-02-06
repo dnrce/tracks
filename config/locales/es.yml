@@ -48,19 +48,9 @@ es:
         format: "%{attribute} %{message}"
       messages: 
         accepted: "debe ser aceptada"
-        blank: "no puede estar en blanco"
-        confirmation: "no coincide con la confirmación"
-        empty: "no puede estar vacío"
-        equal_to: "debe ser igual a %{count}"
         even: "debe ser aún"
-        exclusion: "está reservado"
-        greater_than: "debe ser mayor que %{count}"
-        greater_than_or_equal_to: "debe ser mayor que o igual a %{count}"
-        inclusion: "no está incluido en la lista"
         invalid: "no puede contener el carácter de coma (',')"
-        less_than: "debe ser menor que %{count}"
         less_than_or_equal_to: "debe ser menor o igual a %{count}"
-        not_a_number: "no es un número"
         odd: "tiene que ser impar"
         taken: "Ya se ha dado"
         too_long: "es demasiado largo (el máximo es %{count} caracteres)"
@@ -230,48 +220,24 @@ es:
   datetime: 
     distance_in_words: 
       about_x_hours: 
-        one: "alrededor de 1 hora"
         other: "Acerca de %{count} horas"
       about_x_months: 
-        one: "alrededor de 1 mes"
         other: "Acerca de %{count} meses"
       about_x_years: 
-        one: "alrededor de 1 año"
         other: "Acerca de %{count} años"
       almost_x_years: 
-        one: "casi 1 año"
         other: "Casi %{count} años"
-      half_a_minute: "medio minuto"
       less_than_x_minutes: 
         one: "menos de un minuto"
-        other: "menos de %{count} minutos"
         zero: "menos de 1 minuto"
       less_than_x_seconds: 
-        one: "menos de 1 segundo"
-        other: "menos de %{count} segundos"
         zero: "menos de 1 segundo"
       over_x_years: 
-        one: "más de 1 año"
         other: "en %{count} años"
-      x_days: 
-        one: "1 día"
-        other: "%{count} días"
-      x_minutes: 
-        one: "1 minuto"
-        other: "%{count} minutos"
-      x_months: 
-        one: "1 mes"
-        other: "%{count} meses"
       x_seconds: 
         one: "Un segundo"
-        other: "%{count} segundos"
     prompts: 
-      day: Día
-      hour: Hora
       minute: Minuto
-      month: Mes
-      second: Segundos
-      year: Año
   errors: 
     user_unauthorized: "401 No autorizado: Solo los usuarios administrativos pueden acceder a esta función."
   feedlist: 
@@ -414,20 +380,12 @@ es:
         delimiter: ","
         format: "%u%n"
         separator: "."
-        unit: €
     format: 
       delimiter: ","
       separator: "."
     human: 
       storage_units: 
-        format: "%n %u"
         units: 
-          byte: 
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
           tb: Tuberculosis
   preferences: 
     authentication_header: "Your authentication"
@@ -677,7 +635,6 @@ es:
       month_day: "%B %d"
       short: "%d %b %H:%M"
       stats: "%a %d-%m"
-    pm: pm
   todos: 
     action_deferred: "La acción \\'%{description}\\' se aplazó"
     action_deleted_error: "Failed to delete the action"

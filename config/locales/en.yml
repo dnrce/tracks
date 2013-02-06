@@ -47,23 +47,7 @@ en:
       full_messages: 
         format: "%{attribute} %{message}"
       messages: 
-        accepted: "must be accepted"
-        blank: "can't be blank"
-        confirmation: "doesn't match confirmation"
-        empty: "can't be empty"
-        equal_to: "must be equal to %{count}"
-        even: "must be even"
-        exclusion: "is reserved"
-        greater_than: "must be greater than %{count}"
-        greater_than_or_equal_to: "must be greater than or equal to %{count}"
-        inclusion: "is not included in the list"
         invalid: "cannot contain the comma (',') character"
-        less_than: "must be less than %{count}"
-        less_than_or_equal_to: "must be less than or equal to %{count}"
-        not_a_number: "is not a number"
-        odd: "must be odd"
-        record_invalid: "Validation failed: %{errors}"
-        taken: "has already been taken"
         too_long: "is too long (maximum is %{count} characters)"
         too_short: "is too short (minimum is %{count} characters)"
         wrong_length: "is the wrong length (should be %{count} characters)"
@@ -74,11 +58,6 @@ en:
               blank: "project must have a name"
               taken: "already exists"
               too_long: "project name must be less than 256 characters"
-      template: 
-        body: "There were problems with the following fields:"
-        header: 
-          one: "1 error prohibited this %{model} from being saved"
-          other: "%{count} errors prohibited this %{model} from being saved"
   common: 
     action: Action
     actions: Actions
@@ -181,106 +160,16 @@ en:
     import_errors: "Some errors occurred during import"
     import_successful: "Import was successful."
   date: 
-    abbr_day_names: 
-      - Sun
-      - Mon
-      - Tue
-      - Wed
-      - Thu
-      - Fri
-      - Sat
-    abbr_month_names: 
-      - ~
-      - Jan
-      - Feb
-      - Mar
-      - Apr
-      - May
-      - Jun
-      - Jul
-      - Aug
-      - Sep
-      - Oct
-      - Nov
-      - Dec
-    day_names: 
-      - Sunday
-      - Monday
-      - Tuesday
-      - Wednesday
-      - Thursday
-      - Friday
-      - Saturday
     formats: 
-      default: "%Y-%m-%d"
-      long: "%B %d, %Y"
       longer: "%A %B %d, %Y"
       month_day: ""
       only_day: ""
-      short: "%b %d"
-    month_names: 
-      - ~
-      - January
-      - February
-      - March
-      - April
-      - May
-      - June
-      - July
-      - August
-      - September
-      - October
-      - November
-      - December
-    order: 
-      - !ruby/symbol year
-      - !ruby/symbol month
-      - !ruby/symbol day
   datetime: 
     distance_in_words: 
-      about_x_hours: 
-        one: "about 1 hour"
-        other: "about %{count} hours"
-      about_x_months: 
-        one: "about 1 month"
-        other: "about %{count} months"
-      about_x_years: 
-        one: "about 1 year"
-        other: "about %{count} years"
-      almost_x_years: 
-        one: "almost 1 year"
-        other: "almost %{count} years"
-      half_a_minute: "half a minute"
       less_than_x_minutes: 
-        one: "less than a minute"
-        other: "less than %{count} minutes"
         zero: "less than 1 minute"
       less_than_x_seconds: 
-        one: "less than 1 second"
-        other: "less than %{count} seconds"
         zero: "less than 1 second"
-      over_x_years: 
-        one: "over 1 year"
-        other: "over %{count} years"
-      x_days: 
-        one: "1 day"
-        other: "%{count} days"
-      x_minutes: 
-        one: "1 minute"
-        other: "%{count} minutes"
-      x_months: 
-        one: "1 month"
-        other: "%{count} months"
-      x_seconds: 
-        one: "1 second"
-        other: "%{count} seconds"
-    prompts: 
-      day: Day
-      hour: Hour
-      minute: Minute
-      month: Month
-      second: Seconds
-      year: Year
   errors: 
     user_unauthorized: "401 Unauthorized: Only administrative users are allowed access to this function."
   feedlist: 
@@ -420,37 +309,9 @@ en:
     note_location_link: "In:"
     show_note_title: "Show note"
   number: 
-    currency: 
-      format: 
-        delimiter: ","
-        format: "%u%n"
-        precision: 2
-        separator: "."
-        unit: $
-    format: 
-      delimiter: ","
-      precision: 3
-      separator: "."
     human: 
       format: 
-        delimiter: ""
         precision: 1
-      storage_units: 
-        format: "%n %u"
-        units: 
-          byte: 
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
-    percentage: 
-      format: 
-        delimiter: ""
-    precision: 
-      format: 
-        delimiter: ""
   preferences: 
     authentication_header: "Your authentication"
     change_authentication_type: "Change your authentication type"
@@ -685,22 +546,13 @@ en:
     totals_visible_context_count: "Of those %{count} are visible contexts"
     within_one: "Within 1"
   support: 
-    array: 
-      last_word_connector: ", and "
-      two_words_connector: " and "
-      words_connector: ", "
     select: 
       prompt: "Please select"
   time: 
-    am: am
     formats: 
-      default: "%a, %d %b %Y %H:%M:%S %z"
-      long: "%B %d, %Y %H:%M"
       month_day: "%B %d"
-      short: "%d %b %H:%M"
       stats: "%a %d-%m"
       time: ""
-    pm: pm
   todos: 
     action_deferred: "The action '%{description}' was deferred"
     action_deleted_error: "Failed to delete the action"

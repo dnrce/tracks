@@ -51,18 +51,13 @@ nl:
         blank: "mag niet leeg zijn"
         confirmation: "komt niet overeen met de configuratie"
         empty: "mag niet leeg zijn"
-        equal_to: "moet gelijk zijn aan %{count}"
-        even: "moet even zijn"
         exclusion: "is gereserveerd"
-        greater_than: "moet groter zijn dan %{count}"
         greater_than_or_equal_to: "moet groter of gelijk zijn aan %{count}"
         inclusion: "is niet opgenomen in de lijst"
         invalid: "mag niet een komma (',') karakter bevatten"
         less_than: "moet kleiner zijn dan %{count}"
         less_than_or_equal_to: "moet kleiner of gelijk zijn aan %{count}"
         not_a_number: "is niet een getal"
-        odd: "moet oneven zijn"
-        record_invalid: "Validatie mislukt: %{errors}"
         taken: "is al gepakt"
         too_long: "is te lang (maximum is %{count} karakters)"
         too_short: "is te kort (minimum is %{count} karakters)"
@@ -211,11 +206,9 @@ nl:
       - Zaterdag
     formats: 
       default: "%d-%m-%Y"
-      long: "%e %B %Y"
       longer: "%A %d %B %Y"
       month_day: "%B %d"
       only_day: "%e"
-      short: "%e %b"
     month_names: 
       - ~
       - Januari
@@ -230,10 +223,6 @@ nl:
       - Oktober
       - November
       - December
-    order: 
-      - !ruby/symbol day
-      - !ruby/symbol month
-      - !ruby/symbol year
   datetime: 
     distance_in_words: 
       about_x_hours: 
@@ -241,7 +230,6 @@ nl:
         other: "ongeveer %{count} uren"
       about_x_months: 
         one: "ongeveer 1 maand"
-        other: "ongeveer %{count} maanden"
       about_x_years: 
         one: "ongeveer 1 jaar"
         other: "ongeveer %{count} jaren"
@@ -250,28 +238,13 @@ nl:
         other: "bijna %{count} jaren"
       half_a_minute: "halve minuut"
       less_than_x_minutes: 
-        one: "minder dan een minuut"
-        other: "minder dan %{count} minuten"
         zero: "minder dan 1 minuut"
       less_than_x_seconds: 
         one: "minder dan 1 seconde"
-        other: "minder dan %{count} seconden"
         zero: "minder dan 1 seconde"
       over_x_years: 
         one: "over 1 jaar"
         other: "over %{count} jaren"
-      x_days: 
-        one: "1 dag"
-        other: "%{count} dagen"
-      x_minutes: 
-        one: "1 minuut"
-        other: "%{count} minuten"
-      x_months: 
-        one: "1 maand"
-        other: "%{count} maanden"
-      x_seconds: 
-        one: "1 seconde"
-        other: "%{count} seconden"
     prompts: 
       day: Dag
       hour: Uur
@@ -286,18 +259,11 @@ nl:
       blank: "kan niet leeg zijn"
       confirmation: "komt niet met bevestiging overeen"
       empty: "kan niet leeg zijn"
-      equal_to: "moet gelijk zijn aan %{count}"
-      even: "moet even zijn"
       exclusion: "is gereserveerd"
-      greater_than: "moet groter zijn dan %{count}"
       greater_than_or_equal_to: "moet groter of gelijk zijn aan %{count}"
       inclusion: "is geen onderdeel van de lijst"
       invalid: "is niet geldig"
-      less_than: "moet minder zijn dan %{count}"
       less_than_or_equal_to: "moet minder of gelijk zijn aan %{count}"
-      not_a_number: "is geen getal"
-      not_an_integer: "moet een geheel getal zijn"
-      odd: "moet oneven zijn"
       too_long: "is te lang (maximum is %{count} karakters)"
       too_short: "is te kort (minimum is %{count} karakters)"
       wrong_length: "is de verkeerde lengte (zou %{count} karakters moeten zijn)"
@@ -450,18 +416,11 @@ nl:
   number: 
     currency: 
       format: 
-        delimiter: "."
         format: "%u %n"
-        precision: 2
-        separator: ","
-        unit: €
     format: 
-      delimiter: "."
       precision: 3
-      separator: ","
     human: 
       decimal_units: 
-        format: "%n %u"
         units: 
           billion: Biljoen
           million: Miljoen
@@ -471,16 +430,6 @@ nl:
       format: 
         delimiter: "."
         precision: 1
-      storage_units: 
-        format: "%n %u"
-        units: 
-          byte: 
-            one: Byte
-            other: Bytes
-          gb: GB
-          kb: KB
-          mb: MB
-          tb: TB
   preferences: 
     authentication_header: "Uw authenticatie"
     change_authentication_type: "Verander uw authenticatietype"

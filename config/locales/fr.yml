@@ -51,17 +51,11 @@ fr:
         blank: "ne peux être vide"
         confirmation: "n'est pas identique à la confirmation"
         empty: "ne peut être vide"
-        equal_to: "doit être égal à %{count}"
-        even: "doit être pair"
         exclusion: exclusion?
         greater_than: "doit être plus grand que %{count}"
         greater_than_or_equal_to: "doit être plus grand ou égal à %{count}"
         inclusion: "n'appartient pas à la liste"
         invalid: "ne peut pas contenir le caractère virgule (« , »)"
-        less_than: "doit être inférieur à %{count}"
-        less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-        not_a_number: "n'est pas un nombre"
-        odd: "doit être impair"
         record_invalid: "La validation a échoué : %{errors}"
         taken: "est déjà pris"
         too_long: "est trop long (maximum de %{count} caractères)"
@@ -181,43 +175,10 @@ fr:
     import_errors: "Des erreurs se sont produites durant l'importation."
     import_successful: "L'import a réussi."
   date: 
-    abbr_day_names: 
-      - dim
-      - lun
-      - mar
-      - mer
-      - jeu
-      - ven
-      - sam
-    abbr_month_names: 
-      - ~
-      - jan.
-      - fév.
-      - mar.
-      - avr.
-      - mai
-      - juin
-      - juil.
-      - août
-      - sept.
-      - oct.
-      - nov.
-      - déc.
-    day_names: 
-      - dimanche
-      - lundi
-      - mardi
-      - mercredi
-      - jeudi
-      - vendredi
-      - samedi
     formats: 
-      default: "%d/%m/%Y"
-      long: "%e %B %Y"
       longer: "%A, %d %b %Y"
       month_day: "%d. %B"
       only_day: "%e"
-      short: "%e %b"
     month_names: 
       - ~
       - janvier
@@ -232,70 +193,32 @@ fr:
       - octobre
       - novembre
       - décembre
-    order: 
-      - !ruby/symbol day
-      - !ruby/symbol month
-      - !ruby/symbol year
   datetime: 
     distance_in_words: 
       about_x_hours: 
         one: "environ 1 heure"
-        other: "environ %{count} heures"
       about_x_months: 
         one: "environ 1 mois"
-        other: "environ %{count} mois"
       about_x_years: 
         one: "environ 1 an"
-        other: "environ %{count} ans"
       almost_x_years: 
         one: "presque 1 an"
-        other: "presque %{count} ans"
       half_a_minute: "30 secondes"
       less_than_x_minutes: 
         one: "moins d'1 minute"
-        other: "moins de %{count} minutes"
         zero: "moins d'1 minute"
       less_than_x_seconds: 
         one: "moins d'1 seconde"
-        other: "moins de %{count} secondes"
         zero: "moins d'1 seconde"
       over_x_years: 
         one: "plus d'1 an"
-        other: "plus de %{count} ans"
-      x_days: 
-        one: "1 jour"
-        other: "%{count} jours"
-      x_minutes: 
-        one: "1 minute"
-        other: "%{count} minutes"
-      x_months: 
-        one: "1 mois"
-        other: "%{count} mois"
-      x_seconds: 
-        one: "1 seconde"
-        other: "%{count} secondes"
-    prompts: 
-      day: Jour
-      hour: Heure
-      minute: Minute
-      month: Mois
-      second: Seconde
-      year: Année
   errors: 
     messages: 
       blank: "ne peut pas être absent"
       empty: "ne peut pas être vide"
-      equal_to: "doit être égal à %{count}"
-      even: "doit être pair"
       exclusion: "est réservé"
-      greater_than: "doit être supérieur à %{count}"
-      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
       invalid: "est invalide"
-      less_than: "doit être inférieur à %{count}"
-      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-      not_a_number: "n'est pas un nombre"
       not_an_integer: "doit être un entier"
-      odd: "doit être impair"
       too_long: "est trop long (%{count} caractères maximum)"
       too_short: "est trop court (%{count} caractères minimum)"
     user_unauthorized: "401 Non autorisé : Administrateur seulement."
@@ -450,24 +373,16 @@ fr:
       format: 
         delimiter: ","
         format: "%u%n"
-        precision: 2
         separator: "."
-        significant: false
-        strip_insignificant_zeros: false
         unit: $
     format: 
       delimiter: ","
       precision: 2
       separator: "."
-      significant: false
-      strip_insignificant_zeros: false
     human: 
       format: 
         precision: 1
-        significant: true
-        strip_insignificant_zeros: true
       storage_units: 
-        format: "%n %u"
         units: 
           byte: 
             one: Octet
@@ -714,15 +629,12 @@ fr:
     select: 
       prompt: "Veuillez sélectionner"
   time: 
-    am: am
     formats: 
       default: "%a, %d %b %Y %H:%M:%S %z"
       long: "%B %d, %Y %H:%M"
       month_day: "%B %d"
-      short: "%d %b %H:%M"
       stats: "%a %d-%m"
       time: "%H:%M"
-    pm: pm
   todos: 
     action_deferred: "L'action « %{description} » a été reportée"
     action_deleted_error: "La suppression de l'action a échoué"
