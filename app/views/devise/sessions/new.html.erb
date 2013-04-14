@@ -1,17 +1,32 @@
-<h2>Sign in</h2>
+<div title="<%= t('login.account_login') %>" id="loginform" class="form">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :login %><br />
-  <%= f.text_field :login, :autofocus => true %></div>
+  <%= render_flash %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <h3><%= t('login.please_login') %>:</h3>
+  <div id="database_auth_form" style="display:block">
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+      <table>
+        <tr>
+          <td><%= f.label :login %></td>
+          <td><%= f.text_field :login, :autofocus => true %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password %></td>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        <% if devise_mapping.rememberable? -%>
+          <tr>
+            <td><%= f.label :remember_me, t('login.user_no_expiry') %></td>
+            <td><%= f.check_box :remember_me %></td>
+          </tr>
+        <% end -%>
+        <tr>
+          <td></td>
+          <td><%= f.submit t('login.sign_in') %></td>
+        </tr>
+      </table>
+    <% end %>
+  </div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
