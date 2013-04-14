@@ -1,6 +1,9 @@
 require_dependency "user"
 
 module LoginSystem
+end
+
+module DummyLoginSystem
 
   def current_user
     get_current_user
