@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_zindex_counter
   before_filter :set_locale
   append_before_filter :set_group_view_by
-  prepend_before_filter :login_required
+  prepend_before_filter :authenticate_user!
   prepend_before_filter :enable_mobile_content_negotiation
   after_filter :set_charset
 
