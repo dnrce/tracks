@@ -175,30 +175,6 @@ class ApplicationController < ActionController::Base
     raise ArgumentError.new("invalid value for Boolean: \"#{s}\"")
   end
 
-  def self.openid_enabled?
-    Tracks::Config.openid_enabled?
-  end
-
-  def openid_enabled?
-    self.class.openid_enabled?
-  end
-
-  def self.cas_enabled?
-    Tracks::Config.cas_enabled?
-  end
-
-  def cas_enabled?
-    self.class.cas_enabled?
-  end
-
-  def self.prefered_auth?
-    Tracks::Config.prefered_auth?
-  end
-
-  def prefered_auth?
-    self.class.prefered_auth?
-  end
-
   private
 
   def parse_date_per_user_prefs( s )

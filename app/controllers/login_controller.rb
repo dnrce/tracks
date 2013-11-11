@@ -10,7 +10,6 @@ class LoginController < ApplicationController
 
   def login
     @page_title = "TRACKS::Login"
-    cookies[:preferred_auth] = prefered_auth? unless cookies[:preferred_auth]
     case request.method
     when 'POST'
       if @user = User.authenticate(params['user_login'], params['user_password'])
