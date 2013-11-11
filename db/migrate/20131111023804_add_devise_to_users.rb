@@ -37,7 +37,6 @@ class AddDeviseToUsers < ActiveRecord::Migration
 
 
       # Remove old columns
-      t.remove :token
       t.remove :auth_type
       t.remove :open_id_url
     end
@@ -87,7 +86,6 @@ class AddDeviseToUsers < ActiveRecord::Migration
 
 
       # Remove old columns
-      t.string :token
       t.string :auth_type, :default => 'database', :null => false
       t.string :open_id_url
     end
