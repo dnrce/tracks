@@ -97,9 +97,9 @@ class User < ActiveRecord::Base
   has_one :preference, dependent: :destroy
 
   validates_presence_of :login
-  validates_presence_of :password, if: :password_required?
-  validates_length_of :password, within: 5..40, if: :password_required?
-  validates_presence_of :password_confirmation, if: :password_required?
+  validates_presence_of :password
+  validates_length_of :password, within: 5..40
+  validates_presence_of :password_confirmation
   validates_confirmation_of :password
   validates_length_of :login, within: 3..80
   validates_uniqueness_of :login, on: :create
@@ -108,19 +108,6 @@ class User < ActiveRecord::Base
   before_update :crypt_password
 
   alias_method :prefs, :preference
-
-  def self.authenticate(login, pass)
-    return nil if login.blank?
-    candidate = where("login = ?", login).first
-    return nil if candidate.nil?
-
-    if Tracks::Config.auth_schemes.include?('database')
-      return candidate if candidate.auth_type == 'database' and
-        candidate.password_matches? pass
-    end
-
-    return nil
-  end
 
   def self.no_users_yet?
     count == 0
@@ -155,27 +142,6 @@ class User < ActiveRecord::Base
     UserTime.new(self).midnight(Time.now)
   end
 
-  def generate_token
-    self.token = Digest::SHA1.hexdigest "#{Time.now.to_i}#{rand}"
-  end
-
-  def remember_token?
-    remember_token_expires_at && Time.now.utc < remember_token_expires_at
-  end
-
-  # These create and unset the fields required for remembering users between browser closes
-  def remember_me
-    self.remember_token_expires_at = 2.weeks.from_now.utc
-    self.remember_token ||= Digest::SHA1.hexdigest("#{login}--#{remember_token_expires_at}")
-    save
-  end
-
-  def forget_me
-    self.remember_token_expires_at = nil
-    self.remember_token            = nil
-    save
-  end
-
   # Returns true if the user has a password hashed using SHA-1.
   def uses_deprecated_password?
     crypted_password =~ /^[a-f0-9]{40}$/i
@@ -187,29 +153,6 @@ class User < ActiveRecord::Base
     else
       BCrypt::Password.new(crypted_password) == pass
     end
-  end
-
-  def salted(s)
-    "#{Tracks::Config.salt}--#{s}--"
-  end
-
-  def sha1(s)
-    Digest::SHA1.hexdigest(salted(s))
-  end
-
-  def create_hash(s)
-    BCrypt::Password.create(s)
-  end
-
-protected
-
-  def crypt_password
-    return if password.blank?
-    write_attribute("crypted_password", self.create_hash(password)) if password == password_confirmation
-  end
-
-  def password_required?
-    auth_type == 'database' && crypted_password.blank? || password.present?
   end
 
 end
