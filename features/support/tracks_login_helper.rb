@@ -1,5 +1,4 @@
 class SessionBackdoorController < ::ApplicationController
-  skip_before_filter :login_required
 
   def create
     session['user_id'] = params[:user_id]

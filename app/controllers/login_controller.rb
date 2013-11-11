@@ -2,7 +2,6 @@ class LoginController < ApplicationController
 
   layout 'login'
   skip_before_filter :set_session_expiration
-  skip_before_filter :login_required
   before_filter :login_optional
   before_filter :get_current_user
 

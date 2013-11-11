@@ -2,7 +2,6 @@ require 'openssl'
 
 class MailgunController < ApplicationController
 
-  skip_before_filter :login_required, :only => [:mailgun]
   before_filter :verify, :only => [:mailgun]
   protect_from_forgery with: :null_session
 
