@@ -2,12 +2,7 @@ require 'digest/sha1'
 require 'bcrypt'
 
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-  # Virtual attribute for the unencrypted password
-  attr_accessor :password
+  devise :database_authenticatable, :registerable, :rememberable, :trackable
   
   #for will_paginate plugin
   cattr_accessor :per_page
@@ -108,16 +103,9 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
   validates_length_of :login, within: 3..80
   validates_uniqueness_of :login, on: :create
-  validate :validate_auth_type
 
   before_create :crypt_password, :generate_token
   before_update :crypt_password
-
-  def validate_auth_type
-    unless Tracks::Config.auth_schemes.include?(auth_type)
-      errors.add("auth_type", "not a valid authentication type (#{auth_type})")
-    end
-  end
 
   alias_method :prefs, :preference
 
