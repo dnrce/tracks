@@ -2,6 +2,10 @@ require 'digest/sha1'
 require 'bcrypt'
 
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
   # Virtual attribute for the unencrypted password
   attr_accessor :password
   

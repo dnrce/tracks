@@ -1,4 +1,5 @@
 Tracksapp::Application.routes.draw do
+  devise_for :users
   mount Tolk::Engine => '/tolk', :as => 'tolk' if Rails.env=='development'
 
   root :to => 'todos#index'
