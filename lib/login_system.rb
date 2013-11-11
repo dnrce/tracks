@@ -1,16 +1,17 @@
 require_dependency "user"
 
 module LoginSystem
+
+  def prefs
+    current_user.prefs unless current_user.nil?
+  end
+
 end
 
 module DummyLoginSystem
 
   def current_user
     get_current_user
-  end
-
-  def prefs
-    current_user.prefs unless current_user.nil?
   end
   
   # Logout the {#current_user} and redirect to login page

@@ -104,6 +104,8 @@ class User < ActiveRecord::Base
   validates_length_of :login, within: 3..80
   validates_uniqueness_of :login, on: :create
 
+  after_create :create_preference
+
   alias_method :prefs, :preference
 
   def self.no_users_yet?
@@ -137,6 +139,12 @@ class User < ActiveRecord::Base
 
   def date
     UserTime.new(self).midnight(Time.now)
+  end
+
+  def token
+    ##TODO##
+    # dummy method
+    'dummy-token'
   end
 
 end
