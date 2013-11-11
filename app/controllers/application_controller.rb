@@ -251,7 +251,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_time_zone
-    Time.zone = current_user.prefs.time_zone if logged_in?
+    Time.zone = current_user.prefs.time_zone if user_signed_in?
   end
 
   def set_zindex_counter

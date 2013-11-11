@@ -11,7 +11,7 @@ class SessionBackdoorController < ::ApplicationController
   end
 
   def expire_session
-    current_user.forget_me if logged_in?
+    current_user.forget_me if user_signed_in?
     cookies.delete :auth_token
     session['user_id'] = nil
     reset_session

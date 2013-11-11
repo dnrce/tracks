@@ -17,7 +17,7 @@ module DummyLoginSystem
   #
   # @param [String] message notification to display
   def logout_user message=t('login.logged_out')
-    @user.forget_me if logged_in?
+    @user.forget_me if user_signed_in?
     cookies.delete :auth_token
     session['user_id'] = nil
     if ( SITE_CONFIG['authentication_schemes'].include? 'cas')  && session[:cas_user]
@@ -61,7 +61,7 @@ module DummyLoginSystem
   # When called with before_filter :login_from_cookie will check for an :auth_token
   # cookie and log the user back in if appropriate
   def login_from_cookie
-    return unless cookies[:auth_token] && !logged_in?
+    return unless cookies[:auth_token] && !user_signed_in?
     token = cookies[:auth_token]
     user = User.where(:remember_token => token).first
     if user && user.remember_token?
@@ -136,10 +136,6 @@ module DummyLoginSystem
     end
 
     return true
-  end
-  
-  def logged_in?
-    current_user != nil
   end
   
   def get_current_user

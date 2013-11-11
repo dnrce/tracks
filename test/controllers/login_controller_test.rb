@@ -89,7 +89,7 @@ class LoginControllerTest < ActionController::TestCase
     users(:other_user).remember_me
     @request.cookies["auth_token"] = auth_token_cookie_for(:other_user)
     get :login
-    assert @controller.send(:logged_in?)
+    assert @controller.send(:user_signed_in?)
   end
   
   def test_should_fail_expired_cookie_login
@@ -97,14 +97,14 @@ class LoginControllerTest < ActionController::TestCase
     users(:other_user).update_attribute :remember_token_expires_at, 5.minutes.ago.utc
     @request.cookies["auth_token"] = auth_token_cookie_for(:other_user)
     get :login
-    assert !@controller.send(:logged_in?)
+    assert !@controller.send(:user_signed_in?)
   end
   
   def test_should_fail_cookie_login
     users(:other_user).remember_me
     @request.cookies["auth_token"] = 'invalid_auth_token'
     get :login
-    assert !@controller.send(:logged_in?)
+    assert !@controller.send(:user_signed_in?)
   end
   
   def test_current_user_nil
