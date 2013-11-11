@@ -32,6 +32,7 @@ gem "swf_fu"
 gem "rails_autolink"
 gem "cache_digests"
 gem "rack-mini-profiler"
+gem "devise"
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
