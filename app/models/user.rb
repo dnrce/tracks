@@ -104,9 +104,6 @@ class User < ActiveRecord::Base
   validates_length_of :login, within: 3..80
   validates_uniqueness_of :login, on: :create
 
-  before_create :crypt_password, :generate_token
-  before_update :crypt_password
-
   alias_method :prefs, :preference
 
   def self.no_users_yet?
@@ -140,19 +137,6 @@ class User < ActiveRecord::Base
 
   def date
     UserTime.new(self).midnight(Time.now)
-  end
-
-  # Returns true if the user has a password hashed using SHA-1.
-  def uses_deprecated_password?
-    crypted_password =~ /^[a-f0-9]{40}$/i
-  end
-
-  def password_matches?(pass)
-    if uses_deprecated_password?
-      crypted_password == sha1(pass)
-    else
-      BCrypt::Password.new(crypted_password) == pass
-    end
   end
 
 end
