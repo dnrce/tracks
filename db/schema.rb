@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130227205845) do
+ActiveRecord::Schema.define(version: 20131111023804) do
 
   create_table "contexts", force: true do |t|
     t.string   "name",                                     null: false
@@ -211,16 +211,21 @@ ActiveRecord::Schema.define(version: 20130227205845) do
   add_index "tolk_translations", ["phrase_id", "locale_id"], name: "index_tolk_translations_on_phrase_id_and_locale_id", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "login",                     limit: 80,                      null: false
-    t.string   "crypted_password",          limit: 60,                      null: false
-    t.string   "token"
-    t.boolean  "is_admin",                             default: false,      null: false
+    t.string   "login",                                     null: false
+    t.string   "encrypted_password",                        null: false
+    t.boolean  "is_admin",                  default: false, null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "auth_type",                            default: "database", null: false
-    t.string   "open_id_url"
     t.string   "remember_token"
     t.datetime "remember_token_expires_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",             default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["login"], name: "index_users_on_login"
