@@ -104,8 +104,8 @@ class User < ActiveRecord::Base
   validates_length_of :login, within: 3..80
   validates_uniqueness_of :login, on: :create
 
-  before_create :generate_token
-  after_create :create_preference
+  before_create :set_user_defaults
+  after_create :create_default_preferences
 
   alias_method :prefs, :preference
 
@@ -144,6 +144,17 @@ class User < ActiveRecord::Base
 
   def generate_token
     self.token = Digest::SHA1.hexdigest "#{Time.now.to_i}#{rand}"
+  end
+
+  private
+
+  def set_user_defaults
+    self.is_admin = true if User.no_users_yet?
+    self.generate_token
+  end
+
+  def create_default_preferences
+    self.create_preference({:locale => I18n.locale})
   end
 
 end
