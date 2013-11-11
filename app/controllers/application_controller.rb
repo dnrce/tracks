@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   include LoginSystem
   helper_method :current_user, :prefs, :format_date
 
-  layout proc{ |controller| controller.mobile? ? "mobile" : "application" }
+  layout proc{ |controller| controller.mobile? ? "mobile" : layout_by_resource }
   # exempt_from_layout /\.js\.erb$/
 
   before_filter :check_for_deprecated_password_hash
@@ -292,6 +292,14 @@ class ApplicationController < ActionController::Base
 
   def set_group_view_by
     @group_view_by = params['_group_view_by'] || cookies['group_view_by'] || 'context'
+  end
+  
+  def layout_by_resource
+    if devise_controller?
+      "login"
+    else
+      "application"
+    end
   end
 
 end
