@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.string   "state",      limit: 20, default: "active", null: false
   end
 
-  add_index "contexts", ["user_id", "name"], name: "index_contexts_on_user_id_and_name", using: :btree
-  add_index "contexts", ["user_id"], name: "index_contexts_on_user_id", using: :btree
+  add_index "contexts", ["user_id", "name"], name: "index_contexts_on_user_id_and_name"
+  add_index "contexts", ["user_id"], name: "index_contexts_on_user_id"
 
   create_table "dependencies", force: true do |t|
     t.integer "successor_id",      null: false
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.string  "relationship_type"
   end
 
-  add_index "dependencies", ["predecessor_id"], name: "index_dependencies_on_predecessor_id", using: :btree
-  add_index "dependencies", ["successor_id"], name: "index_dependencies_on_successor_id", using: :btree
+  add_index "dependencies", ["predecessor_id"], name: "index_dependencies_on_predecessor_id"
+  add_index "dependencies", ["successor_id"], name: "index_dependencies_on_successor_id"
 
   create_table "notes", force: true do |t|
     t.integer  "user_id",    null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "updated_at"
   end
 
-  add_index "notes", ["project_id"], name: "index_notes_on_project_id", using: :btree
-  add_index "notes", ["user_id"], name: "index_notes_on_user_id", using: :btree
+  add_index "notes", ["project_id"], name: "index_notes_on_project_id"
+  add_index "notes", ["user_id"], name: "index_notes_on_user_id"
 
   create_table "open_id_authentication_associations", force: true do |t|
     t.integer "issued"
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.integer "review_period",                                 default: 14,             null: false
   end
 
-  add_index "preferences", ["user_id"], name: "index_preferences_on_user_id", using: :btree
+  add_index "preferences", ["user_id"], name: "index_preferences_on_user_id"
 
   create_table "projects", force: true do |t|
     t.string   "name",                                      null: false
@@ -98,10 +98,10 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "last_reviewed"
   end
 
-  add_index "projects", ["state"], name: "index_projects_on_state", using: :btree
-  add_index "projects", ["user_id", "name"], name: "index_projects_on_user_id_and_name", using: :btree
-  add_index "projects", ["user_id", "state"], name: "index_projects_on_user_id_and_state", using: :btree
-  add_index "projects", ["user_id"], name: "index_projects_on_user_id", using: :btree
+  add_index "projects", ["state"], name: "index_projects_on_state"
+  add_index "projects", ["user_id", "name"], name: "index_projects_on_user_id_and_name"
+  add_index "projects", ["user_id", "state"], name: "index_projects_on_user_id_and_state"
+  add_index "projects", ["user_id"], name: "index_projects_on_user_id"
 
   create_table "recurring_todos", force: true do |t|
     t.integer  "user_id",                         default: 1
@@ -132,8 +132,8 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.boolean  "show_always"
   end
 
-  add_index "recurring_todos", ["state"], name: "index_recurring_todos_on_state", using: :btree
-  add_index "recurring_todos", ["user_id"], name: "index_recurring_todos_on_user_id", using: :btree
+  add_index "recurring_todos", ["state"], name: "index_recurring_todos_on_state"
+  add_index "recurring_todos", ["user_id"], name: "index_recurring_todos_on_user_id"
 
   create_table "sessions", force: true do |t|
     t.string   "session_id"
@@ -141,7 +141,7 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "updated_at"
   end
 
-  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id"
 
   create_table "taggings", force: true do |t|
     t.integer "taggable_id"
@@ -149,9 +149,9 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.string  "taggable_type"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type"], name: "index_taggings_on_tag_id_and_taggable_id_and_taggable_type", using: :btree
-  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type", using: :btree
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type"], name: "index_taggings_on_tag_id_and_taggable_id_and_taggable_type"
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], name: "index_taggings_on_taggable_id_and_taggable_type"
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "updated_at"
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", using: :btree
+  add_index "tags", ["name"], name: "index_tags_on_name"
 
   create_table "todos", force: true do |t|
     t.integer  "context_id",                               null: false
@@ -177,12 +177,12 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.text     "rendered_notes"
   end
 
-  add_index "todos", ["context_id"], name: "index_todos_on_context_id", using: :btree
-  add_index "todos", ["project_id"], name: "index_todos_on_project_id", using: :btree
-  add_index "todos", ["state"], name: "index_todos_on_state", using: :btree
-  add_index "todos", ["user_id", "context_id"], name: "index_todos_on_user_id_and_context_id", using: :btree
-  add_index "todos", ["user_id", "project_id"], name: "index_todos_on_user_id_and_project_id", using: :btree
-  add_index "todos", ["user_id", "state"], name: "index_todos_on_user_id_and_state", using: :btree
+  add_index "todos", ["context_id"], name: "index_todos_on_context_id"
+  add_index "todos", ["project_id"], name: "index_todos_on_project_id"
+  add_index "todos", ["state"], name: "index_todos_on_state"
+  add_index "todos", ["user_id", "context_id"], name: "index_todos_on_user_id_and_context_id"
+  add_index "todos", ["user_id", "project_id"], name: "index_todos_on_user_id_and_project_id"
+  add_index "todos", ["user_id", "state"], name: "index_todos_on_user_id_and_state"
 
   create_table "tolk_locales", force: true do |t|
     t.string   "name"
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "updated_at"
   end
 
-  add_index "tolk_locales", ["name"], name: "index_tolk_locales_on_name", unique: true, using: :btree
+  add_index "tolk_locales", ["name"], name: "index_tolk_locales_on_name", unique: true
 
   create_table "tolk_phrases", force: true do |t|
     t.text     "key"
@@ -208,7 +208,7 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "updated_at"
   end
 
-  add_index "tolk_translations", ["phrase_id", "locale_id"], name: "index_tolk_translations_on_phrase_id_and_locale_id", unique: true, using: :btree
+  add_index "tolk_translations", ["phrase_id", "locale_id"], name: "index_tolk_translations_on_phrase_id_and_locale_id", unique: true
 
   create_table "users", force: true do |t|
     t.string   "login",                     limit: 80,                      null: false
@@ -223,6 +223,6 @@ ActiveRecord::Schema.define(version: 20130227205845) do
     t.datetime "remember_token_expires_at"
   end
 
-  add_index "users", ["login"], name: "index_users_on_login", using: :btree
+  add_index "users", ["login"], name: "index_users_on_login"
 
 end
