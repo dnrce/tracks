@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tracks | Actions</title>
+    
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="tracks.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tracks-nav-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">
+            <div id="tracks-logo">
+              <span class="fa-stack fa-lg">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-check fa-stack-1x"></i>
+              </span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="tracks-nav-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#">Starred</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Tickler</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Organize <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Contexts</a></li>
+                <li><a href="#">Notes</a></li>
+                <li><a href="#">Review</a></li>
+                <li><a href="#">Repeating todos</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">View <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Calendar</a></li>
+                <li><a href="#">Done</a></li>
+                <li><a href="#">Feeds</a></li>
+                <li><a href="#">Statistics</a></li>
+              </ul>
+            </li>
+          </ul>
+          <form class="navbar-form navbar-left">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-lg"></i></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-fw fa-sign-out"></i> Logout</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Dan Rice</li>
+                <li><a href="#"><i class="fa fa-fw fa-wrench"></i> Preferences</a></li><!-- preferences -->
+                <li><a href="#"><i class="fa fa-fw fa-download"></i> Data</a></li><!-- combines "Export" and "Feeds" -->
+                <li class="divider"></li>
+                <li class="dropdown-header">Administration</li>
+                <li><a href="#"><i class="fa fa-fw fa-users"></i> Users</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Tracks 3.0</li>
+                <li><a href="#"><i class="fa fa-fw fa-question-circle"></i> Help</a></li>
+                <li><a href="#"><i class="fa fa-fw fa-code"></i> Contribute</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+    
+    <!-- persistent add-action button -->
+    <div class="hidden-xs" id="sidebar" data-spy="affix" data-offset-top="50">
+      <div class="container">
+        <div class="pull-right">
+          <button class="btn btn-primary" data-toggle="modal" data-remote="add-action.htm" data-target="#tracks-add-action-modal" title="Add New Action">
+            <i class="fa fa-fw fa-lg fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container visible-xs">
+      <button class="btn btn-primary btn-block" data-toggle="modal" data-remote="add-action.htm" data-target="#tracks-add-action-modal">
+        <i class="fa fa-fw fa-lg fa-plus"></i> Add New Action
+      </button>
+    </div>
+    <div class="modal fade" id="tracks-add-action-modal" tabindex="-1" role="dialog" aria-labelledby="tracks-add-action-modal-title" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- contexts -->
+    <div class="container">
+      <div class="context">
+        <h2>context1</h2>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Cras justo odio</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Dapibus ac facilisis in</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Morbi leo risus</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Porta ac consectetur ac</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Vestibulum at eros</li>
+        </ul>
+      </div>
+
+      <div class="context">
+        <h2>context2</h2>
+        <ul class="list-unstyled">
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Cras justo odio</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Dapibus ac facilisis in</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Morbi leo risus</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Porta ac consectetur ac</li>
+          <li><a href="#"><i class="fa fa-fw fa-check"></i></a><a href="#"><i class="fa fa-fw fa-star"></i></a>Vestibulum at eros</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <!-- ensure there's a scrollbar -->
+    <div style="height: 200em;"></div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="tracks.js"></script>
+  </body>
+</html>
