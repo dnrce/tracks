@@ -95,21 +95,16 @@
     <div class="hidden-xs" id="sidebar" data-spy="affix" data-offset-top="50">
       <div class="container">
         <div class="pull-right">
-          <button class="btn btn-primary" data-toggle="modal" data-remote="add-action.htm" data-target="#tracks-add-action-modal" title="Add New Action">
+          <button class="btn btn-primary" data-toggle="modal" data-target="#tracks-add-action-modal" title="Add New Action">
             <i class="fa fa-fw fa-lg fa-plus"></i>
           </button>
         </div>
       </div>
     </div>
     <div class="container visible-xs">
-      <button class="btn btn-primary btn-block" data-toggle="modal" data-remote="add-action.htm" data-target="#tracks-add-action-modal">
+      <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#tracks-add-action-modal">
         <i class="fa fa-fw fa-lg fa-plus"></i> Add New Action
       </button>
-    </div>
-    <div class="modal fade" id="tracks-add-action-modal" tabindex="-1" role="dialog" aria-labelledby="tracks-add-action-modal-title" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content"></div>
-      </div>
     </div>
 
     <!-- contexts -->
@@ -139,6 +134,85 @@
  
     <!-- ensure there's a scrollbar -->
     <div style="height: 200em;"></div>
+
+    <!-- add-action modal -->
+    <div class="modal fade" id="tracks-add-action-modal" tabindex="-1" role="dialog" aria-labelledby="tracks-add-action-modal-title" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-label" id="tracks-add-action-modal-title">Add Action</h4>
+            <ul class="nav nav-pills">
+              <li class="active"><a href="#single" data-toggle="tab">Single Action</a></li>
+              <li><a href="#multiple" data-toggle="tab">Multiple Actions</a></li>
+              <li><a href="#recurring" data-toggle="tab">Recurring Action</a></li>
+            </ul>
+          </div><!-- /.modal-header -->
+
+          <div class="modal-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="single">
+                <form class="form-horizontal" role="form">
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Description</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Notes</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control"></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Project</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Context</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Tags</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" placeholder="separate with commas">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Due</label>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control">
+                    </div>
+                    <label class="col-sm-2 control-label">Show from</label>
+                    <div class="col-sm-3">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-2 control-label">Depends on</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="tab-pane" id="multiple">...</div>
+              <div class="tab-pane" id="recurring">...</div>
+            </div>
+          </div><!-- /.modal-body -->
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary">Submit</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
