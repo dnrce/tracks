@@ -829,6 +829,9 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       format.html
+      format.m {
+        cookies[:mobile_url]= {:value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
+      }
       format.ics   {
         @due_all = current_user.todos.not_completed.are_due.reorder("due")
         render :action => 'calendar', :layout => false, :content_type => Mime::ICS
