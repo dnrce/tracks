@@ -29,25 +29,6 @@
   margin-right: .5em;
 }
 
-/* sidebar */
-#sidebar {
-  width: 100%;
-}
-
-#sidebar div {
-  height: 0;
-}
-
-#sidebar.affix {
-  position:fixed;
-  top: 30px;
-}
-
-#sidebar.affix-top {
-  position: absolute;
-  top: 80px;
-}
-
 /* add-action modal */
 .nav-pills {
   margin-top: 15px;
