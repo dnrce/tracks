@@ -166,7 +166,7 @@ class TodosController < ApplicationController
         format.m do
           @return_path=cookies[:mobile_url] ? cookies[:mobile_url] : mobile_path
           if @saved
-            redirect_to @return_path
+            onsite_redirect_to @return_path
           else
             @projects = current_user.projects
             @contexts = current_user.contexts
@@ -413,10 +413,10 @@ class TodosController < ApplicationController
             old_path = cookies[:mobile_url]
             cookies[:mobile_url] = {:value => nil, :secure => SITE_CONFIG['secure_cookies']}
             notify(:notice, t("todos.action_marked_complete", :description => @todo.description, :completed => @todo.completed? ? 'complete' : 'incomplete'))
-           redirect_to old_path
+            onsite_redirect_to old_path
           else
             notify(:notice, t("todos.action_marked_complete", :description => @todo.description, :completed => @todo.completed? ? 'complete' : 'incomplete'))
-            redirect_to todos_path(:format => 'm')
+            onsite_redirect_to todos_path(:format => 'm')
           end
         else
           render :action => "edit", :format => :m
@@ -438,10 +438,10 @@ class TodosController < ApplicationController
           old_path = cookies[:mobile_url]
           cookies[:mobile_url] = {:value => nil, :secure => SITE_CONFIG['secure_cookies']}
           notify(:notice, "Star toggled")
-          redirect_to old_path
+          onsite_redirect_to old_path
         else
           notify(:notice, "Star toggled")
-          redirect_to todos_path(:format => 'm')
+          onsite_redirect_to todos_path(:format => 'm')
         end
       }
     end
@@ -454,6 +454,7 @@ class TodosController < ApplicationController
     @context = current_user.contexts.find_by_id(params[:todo][:context_id])
     @todo.context = @context
     @saved = @todo.save
+    current_user.contexts.find(@original_item_context_id).touch
 
     @context_changed = true
     @status_message = t('todos.context_changed', :name => @context.name)
@@ -469,7 +470,7 @@ class TodosController < ApplicationController
   def update
     @todo = current_user.todos.find_by_id(params['id'])
     @source_view = params['_source_view'] || 'todo'
-    init_data_for_sidebar unless mobile?
+    # init_data_for_sidebar unless mobile?
 
     cache_attributes_from_before_update
 
@@ -495,6 +496,8 @@ class TodosController < ApplicationController
     determine_remaining_in_context_count(@context_changed ? @original_item_context_id : @todo.context_id)
     determine_down_count
     determine_deferred_tag_count(params['_tag_name']) if source_view_is(:tag)
+
+    @todo.touch_predecessors if @original_item_description != @todo.description
 
     respond_to do |format|
       format.js {
@@ -889,7 +892,7 @@ class TodosController < ApplicationController
       redirect_to project_url(@project)
     else
       flash[:error] = "Could not create project from todo: #{@project.errors.full_messages[0]}"
-      redirect_to request.env["HTTP_REFERER"] || root_url
+      onsite_redirect_to request.env["HTTP_REFERER"] || root_url
     end
   end
 
@@ -912,9 +915,9 @@ class TodosController < ApplicationController
     if cookies[:mobile_url]
       old_path = cookies[:mobile_url]
       cookies[:mobile_url] = {:value => nil, :secure => SITE_CONFIG['secure_cookies']}
-      redirect_to old_path
+      onsite_redirect_to old_path
     else
-      redirect_to todos_path(:format => 'm')
+      onsite_redirect_to todos_path(:format => 'm')
     end
   end
 
@@ -1195,6 +1198,7 @@ class TodosController < ApplicationController
     @original_item_due = @todo.due
     @original_item_due_id = get_due_id_for_calendar(@todo.due)
     @original_item_predecessor_list = @todo.predecessors.map{|t| t.specification}.join(', ')
+    @original_item_description = @todo.description
     @todo_was_deferred_or_blocked = @todo.deferred? || @todo.pending?
   end
 
@@ -1443,5 +1447,15 @@ class TodosController < ApplicationController
     end
 
   end
+
+  def onsite_redirect_to(destination)
+    uri = URI.parse(destination)
+
+    if uri.query.present?
+      redirect_to("#{uri.path}?#{uri.query}")
+    else
+      redirect_to(uri.path)
+    end
+  end 
 
 end

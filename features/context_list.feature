@@ -83,7 +83,7 @@ Feature: Manage the list of contexts
     And the badge should show 1
 
   @javascript 
-  Scenario Outline: Add a new context with state
+  Scenario Outline: Showing a new context with state
     Given I have the following contexts
       | context  | hide  |
       | @ipad    | true  |
@@ -96,6 +96,18 @@ Feature: Manage the list of contexts
       | state  | name    |
       | active | @phone  |
       | hidden | @hidden |
+
+  @javascript
+  Scenario: Showing a new context with state
+    When I go to the contexts page
+    Then I should see empty message for active contexts
+    And I should see empty message for hidden contexts
+    When I add a new active context "@active"
+    Then I should see the context "@active" under "active"
+    And I should not see empty message for active contexts
+    When I add a new hidden context "@hidden"
+    Then I should see the context "@hidden" under "hidden"
+    And I should not see empty message for hidden contexts
 
   @javascript
   Scenario: I can drag and drop to order the contexts

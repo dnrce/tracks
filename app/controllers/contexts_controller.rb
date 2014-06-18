@@ -8,14 +8,10 @@ class ContextsController < ApplicationController
   prepend_before_filter :login_or_feed_token_required, :only => [:index]
 
   def index
+    @all_contexts = current_user.contexts
     @active_contexts = current_user.contexts.active
     @hidden_contexts = current_user.contexts.hidden
-    @new_context = current_user.contexts.build
-    init_not_done_counts(['context'])
-
-    # save all contexts here as @new_context will add an empty one to current_user.contexts
-    @all_contexts = @active_contexts + @hidden_contexts
-    @count = @all_contexts.size
+    init_not_done_counts(['context']) unless request.format == :autocomplete
 
     respond_to do |format|
       format.html &render_contexts_html
@@ -207,6 +203,9 @@ class ContextsController < ApplicationController
       @no_hidden_contexts = @hidden_contexts.empty?
       @active_count = @active_contexts.size
       @hidden_count = @hidden_contexts.size
+      @count = @active_count + @hidden_count
+      @new_context = current_user.contexts.build
+
       render
     end
   end
@@ -235,10 +234,7 @@ class ContextsController < ApplicationController
   
   def render_autocomplete
     lambda do
-      # first get active contexts with todos then those without
-      filled_contexts = @active_contexts.reject { |ctx| ctx.todos.count == 0 } + @hidden_contexts.reject { |ctx| ctx.todos.count == 0 }
-      empty_contexts = @active_contexts.find_all { |ctx| ctx.todos.count == 0 } + @hidden_contexts.find_all { |ctx| ctx.todos.count == 0 }
-      render :text => for_autocomplete(filled_contexts + empty_contexts, params[:term])
+      render :text => for_autocomplete(current_user.contexts, params[:term])
     end
   end
 

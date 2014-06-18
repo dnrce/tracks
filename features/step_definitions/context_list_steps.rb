@@ -13,6 +13,8 @@ end
 
 When /^I edit the context to rename it to "([^\"]*)"$/ do |new_name|
   find("a#link_edit_context_#{@context.id}").click
+
+  # wait for the form to appear (which included a submit button)
   page.should have_css("button#submit_context_#{@context.id}", :visible=>true)
 
   within "div.edit-form" do  
@@ -21,6 +23,8 @@ When /^I edit the context to rename it to "([^\"]*)"$/ do |new_name|
   end
 
   # wait for the form to go away
+  page.should_not have_css("button#submit_context_#{@context.id}", :visible => true)
+  # wait for the changed context to appear
   page.should have_css("a#link_edit_context_#{@context.id}", :visible=> true)
 end
 
@@ -85,4 +89,13 @@ end
 
 Then /^the context list badge for ([^"]*) contexts should show (\d+)$/ do |state_name, count|
   find("span##{state_name}-contexts-count").text.should == count
+end
+
+Then /^I should (see|not see) empty message for (active|hidden) contexts$/ do |visible, state|
+  box = (state=='active') ? "div#active-contexts-empty-nd" : "div#hidden-contexts-empty-nd"
+
+  elem = page.find(box)
+  elem.should_not be_nil
+
+  elem.send(visible=="see" ? "should" : "should_not", be_visible)
 end
