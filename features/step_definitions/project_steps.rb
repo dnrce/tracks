@@ -207,17 +207,10 @@ When /^I add a note "([^"]*)" to the project$/ do |note_body|
   submit_button = "div.widgets button#submit_note"
 
   click_link "Add a note"
-  expect(page).to have_css submit_button
+  expect(page).to have_css(submit_button)
   fill_in "note[body]", :with => note_body
-  
-  elem = find(submit_button)
-  expect(elem).to_not be_nil
-  elem.click
-
-  wait_until do
-    !elem.visible?
-  end
-
+  find(submit_button).click
+  expect(page).to_not have_css(submit_button, visible: true)
 end
 
 When /^I click on the first note icon$/ do
@@ -283,9 +276,7 @@ Then /^I should see the italic text "([^\"]*)" in the project description$/ do |
 end
 
 Then /^the project title should be "(.*)"$/ do |title|
-  wait_until do
-    page.find("h2#project_name_container span#project_name").text == title
-  end
+  expect(page).to have_selector("h2#project_name_container span#project_name", text: title, exact: true)
 end
 
 Then /^I should see the project name is "([^"]*)"$/ do |project_name|

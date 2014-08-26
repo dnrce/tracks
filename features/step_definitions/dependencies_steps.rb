@@ -42,11 +42,9 @@ When /^I edit the dependency of "([^"]*)" to add "([^"]*)" as predecessor$/ do |
   # in webkit, the autocompleter is not fired after fill_in
   page.execute_script %Q{$("#{form_css}").find('input[id$="predecessor_input"]').autocomplete('search')} if Capybara.javascript_driver == :webkit
   
-  # wait for auto complete
-  expect(page).to have_css("a.ui-state-focus")
+  wait_for_auto_complete
 
-  # click first line
-  page.find(:css, "ul li a.ui-state-focus").click
+  click_first_line_of_auto_complete
 
   # wait for the new dependency to be added to the list
   expect(page).to have_css("li#pred_#{predecessor.id}")
@@ -85,11 +83,8 @@ Then /^the successors of "(.*)" should include "(.*)"$/ do |parent_name, child_n
   parent = @current_user.todos.where(:description => parent_name).first
   expect(parent).to_not be_nil
 
-  # wait until the successor is added. TODO: make this not loop indefinitly
-  wait_until do
-    found = !parent.pending_successors.where(:description => child_name).first.nil?
-    sleep 0.2 unless found
-    found
+  Timeout.timeout(Capybara.default_wait_time) do
+    loop until !parent.pending_successors.where(:description => child_name).first.nil?
   end
 end
 
