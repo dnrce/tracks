@@ -46,7 +46,7 @@ group :development do
   gem "spring-commands-cucumber"
   gem "yard"
 
-  gem 'tolk', '~> 1.6.0'
+  gem 'tolk'
 
   gem "bullet"
   gem "rack-mini-profiler"
