@@ -3,7 +3,7 @@ require 'test_helper'
 class TodoFromRichMessageTest < ActiveSupport::TestCase
 
   def setup
-    @completed = Todo.find(8)
+    @completed = todos(:upgrade_rails)
   end
 
   def test_from_rich_message_adds_to_default_context

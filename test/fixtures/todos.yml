@@ -27,7 +27,6 @@ end
 %>
 
 call_bill:
-  id: 1
   context_id: 1
   project_id: 2
   description: Call Bill Gates to find out how much he makes per day
@@ -39,7 +38,6 @@ call_bill:
   user_id: 1
 
 call_dino_ext:
-  id: 2
   context_id: 2
   project_id: 3
   description: Call dinosaur exterminator
@@ -51,7 +49,6 @@ call_dino_ext:
   user_id: 1
 
 buy_milk:
-  id: 3
   context_id: 4
   project_id: ~
   description: Buy milk
@@ -63,7 +60,6 @@ buy_milk:
   user_id: 1
 
 buy_bread:
-  id: 4
   context_id: 4
   project_id: ~
   description: Buy bread
@@ -75,7 +71,6 @@ buy_bread:
   user_id: 1
 
 construct_dilation_device:
-  id: 5
   context_id: 5
   project_id: 1
   description: Construct time dilation device
@@ -87,7 +82,6 @@ construct_dilation_device:
   user_id: 1
 
 phone_grandfather:
-  id: 6
   context_id: 2
   project_id: 1
   description: Phone Grandfather to ask about the paradox
@@ -99,7 +93,6 @@ phone_grandfather:
   user_id: 1
 
 book:
-  id: 7
   context_id: 6
   project_id: 3
   description: Get a book out of the library
@@ -111,7 +104,6 @@ book:
   user_id: 1
 
 upgrade_rails:
-  id: 8
   context_id: 4
   project_id: ~
   description: Upgrade to Rails 0.9.1
@@ -123,7 +115,6 @@ upgrade_rails:
   user_id: 1
 
 due_today:
-  id: 9
   context_id: 1
   project_id: ~
   description: This should be due today
@@ -135,7 +126,6 @@ due_today:
   user_id: 1
 
 foo:
-  id: 10
   context_id: 1
   project_id: ~
   description: foo
@@ -147,7 +137,6 @@ foo:
   user_id: 1
 
 buy_shares:
-  id: 11
   context_id: 1
   project_id: 2
   description: Buy shares
@@ -159,7 +148,6 @@ buy_shares:
   user_id: 1
 
 buy_stego_bait:
-  id: 12
   context_id: 1
   project_id: 3
   description: Buy stegosaurus bait
@@ -171,7 +159,6 @@ buy_stego_bait:
   user_id: 1
 
 new_action_in_context:
-  id: 13
   context_id: 1
   project_id: 3
   description: New action in context
@@ -183,7 +170,6 @@ new_action_in_context:
   user_id: 1
 
 call_stock_broker:
-  id: 14
   context_id: 2
   project_id: 2
   description: Call stock broker
@@ -195,7 +181,6 @@ call_stock_broker:
   user_id: 1
 
 select_delorean_model:
-  id: 15
   context_id: 6
   project_id: 1
   description: Select Delorean model
@@ -208,7 +193,6 @@ select_delorean_model:
   user_id: 1
 
 buy_tix:
-  id: 16
   context_id: 10
   project_id: 4
   description: Buy tix
@@ -220,9 +204,7 @@ buy_tix:
   show_from: <%= next_week %>
   user_id: 2
 
-
 pal_confirmation:
-  id: 17
   context_id: 11
   project_id: 4
   description: Confirmation from pal
@@ -235,7 +217,6 @@ pal_confirmation:
   user_id: 2
 
 call_bill_gates_every_day:
-  id: 18
   user_id: 1
   context_id: 1
   project_id: 2
@@ -249,7 +230,6 @@ call_bill_gates_every_day:
   recurring_todo_id: 1
 
 email_broker:
-  id: 19
   user_id: 1
   context_id: 3
   description: Ask about better stocks

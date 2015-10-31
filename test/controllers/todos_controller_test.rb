@@ -64,9 +64,9 @@ class TodosControllerTest < ActionController::TestCase
 
   def test_deferred_count_for_project_source_view
     login_as(:admin_user)
-    xhr :post, :toggle_check, :id => 5, :_source_view => 'project'
+    xhr :post, :toggle_check, :id => todos(:construct_dilation_device).id, :_source_view => 'project'
     assert_equal 1, assigns['remaining_deferred_or_pending_count']
-    xhr :post, :toggle_check, :id => 15, :_source_view => 'project'
+    xhr :post, :toggle_check, :id => todos(:select_delorean_model).id, :_source_view => 'project'
     assert_equal 0, assigns['remaining_deferred_or_pending_count']
   end
 
@@ -77,7 +77,8 @@ class TodosControllerTest < ActionController::TestCase
   def test_tag_is_retrieved_properly
     login_as(:admin_user)
     get :index
-    t = assigns['not_done_todos'].find{|t| t.id == 2}
+    id = todos(:call_dino_ext).id
+    t = assigns['not_done_todos'].find { |t| t.id == id }
     assert_equal 1, t.tags.count
     assert_equal 'foo', t.tags[0].name
     assert !t.starred?
@@ -296,8 +297,9 @@ class TodosControllerTest < ActionController::TestCase
 
   def test_destroy_todo
     login_as(:admin_user)
-    xhr :post, :destroy, :id => 1, :_source_view => 'todo'
-    todo = Todo.where(:id=>1).first
+    t = todos(:call_bill)
+    xhr :post, :destroy, :id => t.id, :_source_view => 'todo'
+    todo = Todo.where(:id=>t.id).first
     assert_nil todo
   end
 
@@ -312,18 +314,18 @@ class TodosControllerTest < ActionController::TestCase
   end
 
   def test_update_todo_project
-    t = Todo.find(1)
+    t = todos(:call_bill)
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"Build a working time machine", "todo"=>{"id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo bar"
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"Build a working time machine", "todo"=>{"id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo bar"
+    t.reload
     assert_equal 1, t.project_id
   end
 
   def test_update_todo_delete_project
-    t = Todo.find(1)
+    t = todos(:call_bill)
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"", "todo"=>{"id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo bar"
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"", "todo"=>{"id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo bar"
+    t.reload
     assert_nil t.project_id
   end
 
@@ -331,15 +333,16 @@ class TodosControllerTest < ActionController::TestCase
     login_as(:admin_user)
     get :index
     assert_equal 11, assigns['count']
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"Make more money than Billy Gates", "todo"=>{"id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006", "show_from"=>"30/11/2030"}, "tag_list"=>"foo bar"
+    t = todos(:call_bill)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"Make more money than Billy Gates", "todo"=>{"id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006", "show_from"=>"30/11/2030"}, "tag_list"=>"foo bar"
     assert_equal 10, assigns['down_count']
   end
 
   def test_update_todo
-    t = Todo.find(1)
+    t = todos(:call_bill)
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "todo"=>{"context_id"=>"1", "project_id"=>"2", "id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo, bar"
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "todo"=>{"context_id"=>"1", "project_id"=>"2", "id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo, bar"
+    t.reload
     assert_equal "Call Warren Buffet to find out how much he makes per day", t.description
     assert_equal "bar, foo", t.tag_list
     expected = Date.new(2006,11,30)
@@ -348,27 +351,27 @@ class TodosControllerTest < ActionController::TestCase
   end
 
   def test_update_todos_with_blank_project_name
-    t = Todo.find(1)
+    t = todos(:call_bill)
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', :project_name => '', "todo"=>{"id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo, bar"
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', :project_name => '', "todo"=>{"id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo, bar"
     t.reload
     assert t.project.nil?
   end
 
   def test_update_todo_tags_to_none
-    t = Todo.find(1)
+    t = todos(:call_bill)
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "todo"=>{"context_id"=>"1", "project_id"=>"2", "id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>""
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "todo"=>{"context_id"=>"1", "project_id"=>"2", "id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>""
+    t.reload
     assert_equal true, t.tag_list.empty?
   end
 
   def test_update_todo_tags_with_whitespace_and_dots
-    t = Todo.find(1)
+    t = todos(:call_bill)
     login_as(:admin_user)
     taglist = "  one  ,  two,three    ,four, 8.1.2, version1.5"
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "todo"=>{"context_id"=>"1", "project_id"=>"2", "id"=>"1", "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>taglist
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "todo"=>{"context_id"=>"1", "project_id"=>"2", "id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>taglist
+    t.reload
     assert_equal "8.1.2, four, one, three, two, version1.5", t.tag_list
   end
 
@@ -395,7 +398,7 @@ class TodosControllerTest < ActionController::TestCase
     # called by dragging a todo to another context container
     login_as(:admin_user)
 
-    todo = users(:admin_user).todos.active.first
+    todo = todos(:call_dino_ext)
     context = users(:admin_user).contexts.first
 
     assert_not_equal todo.context.id, context.id
@@ -411,22 +414,22 @@ class TodosControllerTest < ActionController::TestCase
   #######
 
   def test_update_clearing_show_from_makes_todo_active
-    t = Todo.find(1)
+    t = todos(:call_bill)
     t.show_from = "01/01/2030"
     assert t.deferred?
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "todo"=>{"show_from"=>""}, "tag_list"=>""
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "todo"=>{"show_from"=>""}, "tag_list"=>""
+    t.reload
     assert t.active?
     assert_nil t.show_from
   end
 
   def test_update_setting_show_from_makes_todo_deferred
-    t = Todo.find(1)
+    t = todos(:call_bill)
     assert t.active?
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, :_source_view => 'todo', "todo"=>{"show_from"=>"01/01/2030"}, "tag_list"=>""
-    t = Todo.find(1)
+    xhr :post, :update, :id => t.id, :_source_view => 'todo', "todo"=>{"show_from"=>"01/01/2030"}, "tag_list"=>""
+    t.reload
     assert t.deferred?
     assert_not_nil t.show_from
   end
@@ -1013,8 +1016,8 @@ class TodosControllerTest < ActionController::TestCase
 
   def test_do_not_activate_done_successors
     login_as(:admin_user)
-    predecessor = Todo.find(1)
-    successor = Todo.find(2)
+    predecessor = todos(:call_bill)
+    successor = todos(:call_dino_ext)
     successor.add_predecessor(predecessor)
 
     successor.complete!

@@ -66,8 +66,8 @@ class TodoXmlApiTest < ActionDispatch::IntegrationTest
   <context_id>#{contexts(:office).id}</context_id>
   <project_id>#{projects(:timemachine).id}</project_id>
   <predecessor_dependencies>
-    <predecessor>5</predecessor>
-    <predecessor>6</predecessor>
+    <predecessor>#{todos(:construct_dilation_device).id}</predecessor>
+    <predecessor>#{todos(:phone_grandfather).id}</predecessor>
   </predecessor_dependencies>
 </todo>"
 
@@ -84,7 +84,7 @@ class TodoXmlApiTest < ActionDispatch::IntegrationTest
   <context_id>#{contexts(:office).id}</context_id>
   <project_id>#{projects(:timemachine).id}</project_id>
   <predecessor_dependencies>
-    <predecessor>6</predecessor>
+    <predecessor>#{todos(:phone_grandfather).id}</predecessor>
   </predecessor_dependencies>
 </todo>"
 

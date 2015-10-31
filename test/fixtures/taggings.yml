@@ -2,24 +2,24 @@
 foo_bar1:
   id: 1
   tag_id: 1
-  taggable_id: 1 # Call Bill Gates
+  taggable: call_bill
   taggable_type: Todo
 
 foo_bar2:
   id: 2
   tag_id: 2
-  taggable_id: 1 # Call Bill Gates
+  taggable: call_bill
   taggable_type: Todo
 
 # Todo 2 should be tagged with foo
 foo1:
   id: 3
   tag_id: 1
-  taggable_id: 2 # Call dinosaur exterminator
+  taggable: call_dino_ext
   taggable_type: Todo
 
 foo2:
   id: 4
   tag_id: 1
-  taggable_id: 3 # Buy milk - completed
+  taggable: buy_milk
   taggable_type: Todo

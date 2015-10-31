@@ -4,9 +4,9 @@ class TodoTest < ActiveSupport::TestCase
   fixtures :todos, :recurring_todos, :users, :contexts, :preferences, :tags, :taggings, :projects
 
   def setup
-    @not_completed1 = Todo.find(1).reload
-    @not_completed2 = Todo.find(2).reload
-    @completed = Todo.find(8).reload
+    @not_completed1 = todos(:call_bill)
+    @not_completed2 = todos(:call_dino_ext)
+    @completed = todos(:upgrade_rails)
   end
 
   def next_week
@@ -16,7 +16,6 @@ class TodoTest < ActiveSupport::TestCase
   # Test loading a todo item
   def test_load
     assert_kind_of Todo, @not_completed1
-    assert_equal 1, @not_completed1.id
     assert_equal 1, @not_completed1.context_id
     assert_equal 2, @not_completed1.project_id
     assert_equal "Call Bill Gates to find out how much he makes per day", @not_completed1.description
@@ -246,8 +245,8 @@ class TodoTest < ActiveSupport::TestCase
     assert !@not_completed1.starred?
   end
 
-  def test_todo_2_is_not_starred
-    assert !Todo.find(2).starred?
+  def test_todo_is_not_starred
+    assert !@not_completed2.starred?
   end
 
   def test_todo_is_starred_after_starred_tag_is_added
