@@ -47,7 +47,7 @@ class ContextTest < ActiveSupport::TestCase
   end
 
   def test_to_param_returns_id
-    assert_equal '1', @agenda.to_param
+    assert_equal @agenda.id.to_s, @agenda.to_param
   end
 
   def test_title_reader_returns_name

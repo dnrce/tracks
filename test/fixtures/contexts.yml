@@ -10,7 +10,6 @@ end
 
 %>
 agenda:
-  id: 1
   name: agenda
   position: 1
   state: active
@@ -19,7 +18,6 @@ agenda:
   updated_at: <%= today %>
 
 call:
-  id: 2
   name: call
   position: 2
   state: active
@@ -28,7 +26,6 @@ call:
   updated_at: <%= today %>
 
 email:
-  id: 3
   name: email
   position: 3
   state: active
@@ -37,7 +34,6 @@ email:
   updated_at: <%= today %>
 
 errand:
-  id: 4
   name: errand
   position: 4
   state: active
@@ -46,7 +42,6 @@ errand:
   updated_at: <%= today %>
 
 lab:
-  id: 5
   name: lab
   position: 5
   state: active
@@ -55,7 +50,6 @@ lab:
   updated_at: <%= today %>
 
 library:
-  id: 6
   name: library
   position: 6
   state: active
@@ -64,7 +58,6 @@ library:
   updated_at: <%= today %>
 
 freetime:
-  id: 7
   name: freetime
   position: 7
   state: active
@@ -73,7 +66,6 @@ freetime:
   updated_at: <%= today %>
 
 office:
-  id: 8
   name: office
   position: 8
   state: active
@@ -82,7 +74,6 @@ office:
   updated_at: <%= today %>
 
 waitingfor:
-  id: 9
   name: waiting for
   position: 9
   state: active
@@ -91,7 +82,6 @@ waitingfor:
   updated_at: <%= today %>
 
 office_otheruser:
-  id: 10
   name: office
   position: 1
   state: active
@@ -100,7 +90,6 @@ office_otheruser:
   updated_at: <%= today %>
 
 waitingfor_otheruser:
-  id: 11
   name: waiting for
   position: 2
   state: active
@@ -109,7 +98,6 @@ waitingfor_otheruser:
   updated_at: <%= today %>
 
 someday_maybe:
-  id: 12
   name: someday maybe
   position: 10
   state: hidden
@@ -118,7 +106,6 @@ someday_maybe:
   updated_at: <%= today %>
 
 inbox:
-  id: 13
   name: Inbox
   position: 1
   state: active
@@ -127,7 +114,6 @@ inbox:
   updated_at: <%= today %>
 
 anothercontext:
-  id: 14
   name: anothercontext
   position: 2
   state: active

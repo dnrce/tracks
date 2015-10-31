@@ -178,10 +178,9 @@ class UserTest < ActiveSupport::TestCase
 
   def test_find_context_by_params
     u = @admin_user
-    c = u.contexts.find_by_params('id' => '1')
-    assert_equal contexts(:agenda), c
-    c = u.contexts.find_by_params('context_id' => '1')
-    assert_equal contexts(:agenda), c
+    c = contexts(:agenda)
+    assert_equal c, u.contexts.find_by_params('id' => c.id)
+    assert_equal c, u.contexts.find_by_params('context_id' => c.id)
   end
 
   def test_find_project_by_params
@@ -294,10 +293,10 @@ class UserTest < ActiveSupport::TestCase
 
   def test_update_positions_of_contexts
     u = users(:admin_user)
-    assert_equal "1,2,3,4,5,6,7,8,9,12", u.contexts.map(&:id).join(",")
-
-    u.contexts.update_positions [1,2,3,8,9,12,4,5,6,7]
-    assert_equal "1,2,3,8,9,12,4,5,6,7", u.contexts.reload.map(&:id).join(",")
+    current_order = u.contexts.map(&:id)
+    new_order = current_order.rotate
+    u.contexts.update_positions new_order
+    assert_equal new_order, u.contexts.reload.map(&:id)
   end
 
   def test_cache_notes_count_for_projects
@@ -353,14 +352,20 @@ class UserTest < ActiveSupport::TestCase
     project_counts = u.todos.count_by_group(:project_id)
     assert_equal [6,3,4,4], project_counts.values
 
-    context_counts = u.todos.count_by_group(:context_id)
-    assert_equal [7,3,1,3,1,2], context_counts.values
+    context_counts = {
+      contexts(:agenda).id => 7,
+      contexts(:call).id => 3,
+      contexts(:email).id => 1,
+      contexts(:errand).id => 3,
+      contexts(:lab).id => 1,
+      contexts(:library).id => 2
+    }
+    assert_equal context_counts.sort.map { |k, v| v }, u.todos.count_by_group(:context_id).values
 
     # add a todo to the first context and check that the count is increased
-    u.todos.create!(:description => "yet another todo", :context => u.contexts.first)
-
-    context_counts = u.todos.reload.count_by_group(:context_id)
-    assert_equal [8,3,1,3,1,2], context_counts.values
+    u.todos.create!(:description => "yet another todo", :context => contexts(:agenda))
+    context_counts[contexts(:agenda).id] += 1
+    assert_equal context_counts.sort.map { |k, v| v }, u.todos.reload.count_by_group(:context_id).values
   end
 
   def test_deleting_user_deletes_all_related_data

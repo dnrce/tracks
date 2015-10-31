@@ -31,7 +31,7 @@ end
 call_bill_gates_every_day:
   id: 1
   user_id: 1
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Call Bill Gates every day
   notes: ~
@@ -58,7 +58,7 @@ call_bill_gates_every_day:
 call_bill_gates_every_workday:
   id: 2
   user_id: 1
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Call Bill Gates every workday
   notes: ~
@@ -85,7 +85,7 @@ call_bill_gates_every_workday:
 call_bill_gates_every_week:
   id: 3
   user_id: 1
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Call Bill Gates every week
   notes: ~
@@ -112,7 +112,7 @@ call_bill_gates_every_week:
 check_with_bill_every_last_friday_of_month:
   id: 4
   user_id: 1
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Check with Bill every last friday of the month
   notes: ~
@@ -139,7 +139,7 @@ check_with_bill_every_last_friday_of_month:
 birthday_reinier:
   id: 5
   user_id: 1
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Congratulate Reinier on his birthday
   notes: ~

@@ -50,4 +50,4 @@ sms_user_prefs:
   verbose_action_descriptors: false
   show_project_on_todo_done: true
   sms_email: 5555555555@tmomail.net
-  sms_context_id: 13
+  sms_context: inbox

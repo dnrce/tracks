@@ -33,15 +33,15 @@ class FeedSmokeTest < ActionDispatch::IntegrationTest
   end
   
   def test_all_actions_in_context_rss
-    assert_success "/contexts/1/todos.rss?token=#{ users(:admin_user).token }"
+    assert_success "/contexts/#{contexts(:agenda).id}/todos.rss?token=#{ users(:admin_user).token }"
   end
   
   def test_all_actions_in_context_txt
-    assert_success "/contexts/1/todos.txt?token=#{ users(:admin_user).token }"
+    assert_success "/contexts/#{contexts(:agenda).id}/todos.txt?token=#{ users(:admin_user).token }"
   end
   
   def test_all_actions_in_context_ical
-    assert_success "/contexts/1/todos.ics?token=#{ users(:admin_user).token }"
+    assert_success "/contexts/#{contexts(:agenda).id}/todos.ics?token=#{ users(:admin_user).token }"
   end
   
   def test_all_actions_in_project_rss

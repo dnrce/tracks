@@ -27,7 +27,7 @@ end
 %>
 
 call_bill:
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Call Bill Gates to find out how much he makes per day
   notes: ~
@@ -38,7 +38,7 @@ call_bill:
   user_id: 1
 
 call_dino_ext:
-  context_id: 2
+  context: call
   project_id: 3
   description: Call dinosaur exterminator
   notes: Ask him if I need to hire a skip for the corpses.
@@ -49,7 +49,7 @@ call_dino_ext:
   user_id: 1
 
 buy_milk:
-  context_id: 4
+  context: errand
   project_id: ~
   description: Buy milk
   notes: ~
@@ -60,7 +60,7 @@ buy_milk:
   user_id: 1
 
 buy_bread:
-  context_id: 4
+  context: errand
   project_id: ~
   description: Buy bread
   notes: ~
@@ -71,7 +71,7 @@ buy_bread:
   user_id: 1
 
 construct_dilation_device:
-  context_id: 5
+  context: lab
   project_id: 1
   description: Construct time dilation device
   notes: ~
@@ -82,7 +82,7 @@ construct_dilation_device:
   user_id: 1
 
 phone_grandfather:
-  context_id: 2
+  context: call
   project_id: 1
   description: Phone Grandfather to ask about the paradox
   notes: Added some _notes_.
@@ -93,7 +93,7 @@ phone_grandfather:
   user_id: 1
 
 book:
-  context_id: 6
+  context: library
   project_id: 3
   description: Get a book out of the library
   notes: 'Dinosaurs''R'
@@ -104,7 +104,7 @@ book:
   user_id: 1
 
 upgrade_rails:
-  context_id: 4
+  context: errand
   project_id: ~
   description: Upgrade to Rails 0.9.1
   notes: ~
@@ -115,7 +115,7 @@ upgrade_rails:
   user_id: 1
 
 due_today:
-  context_id: 1
+  context: agenda
   project_id: ~
   description: This should be due today
   notes: ~
@@ -126,7 +126,7 @@ due_today:
   user_id: 1
 
 foo:
-  context_id: 1
+  context: agenda
   project_id: ~
   description: foo
   notes: ~
@@ -137,7 +137,7 @@ foo:
   user_id: 1
 
 buy_shares:
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Buy shares
   notes: ~
@@ -148,7 +148,7 @@ buy_shares:
   user_id: 1
 
 buy_stego_bait:
-  context_id: 1
+  context: agenda
   project_id: 3
   description: Buy stegosaurus bait
   notes: ~
@@ -159,7 +159,7 @@ buy_stego_bait:
   user_id: 1
 
 new_action_in_context:
-  context_id: 1
+  context: agenda
   project_id: 3
   description: New action in context
   notes: Some notes
@@ -170,7 +170,7 @@ new_action_in_context:
   user_id: 1
 
 call_stock_broker:
-  context_id: 2
+  context: call
   project_id: 2
   description: Call stock broker
   notes: 'tel: 12345'
@@ -181,7 +181,7 @@ call_stock_broker:
   user_id: 1
 
 select_delorean_model:
-  context_id: 6
+  context: library
   project_id: 1
   description: Select Delorean model
   notes: ~
@@ -193,7 +193,7 @@ select_delorean_model:
   user_id: 1
 
 buy_tix:
-  context_id: 10
+  context: office_otheruser
   project_id: 4
   description: Buy tix
   notes: ~
@@ -205,7 +205,7 @@ buy_tix:
   user_id: 2
 
 pal_confirmation:
-  context_id: 11
+  context: waitingfor_otheruser
   project_id: 4
   description: Confirmation from pal
   notes: ~
@@ -218,7 +218,7 @@ pal_confirmation:
 
 call_bill_gates_every_day:
   user_id: 1
-  context_id: 1
+  context: agenda
   project_id: 2
   description: Call Bill Gates every day
   notes: ~
@@ -231,7 +231,7 @@ call_bill_gates_every_day:
 
 email_broker:
   user_id: 1
-  context_id: 3
+  context: email
   description: Ask about better stocks
   notes: ~
   state: pending

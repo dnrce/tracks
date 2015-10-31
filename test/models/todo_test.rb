@@ -16,7 +16,7 @@ class TodoTest < ActiveSupport::TestCase
   # Test loading a todo item
   def test_load
     assert_kind_of Todo, @not_completed1
-    assert_equal 1, @not_completed1.context_id
+    assert_equal contexts(:agenda).id, @not_completed1.context_id
     assert_equal 2, @not_completed1.project_id
     assert_equal "Call Bill Gates to find out how much he makes per day", @not_completed1.description
     assert_nil @not_completed1.notes
@@ -109,7 +109,7 @@ class TodoTest < ActiveSupport::TestCase
     user = users(:other_user)
     todo = user.todos.build
     todo.show_from = next_week
-    todo.context_id = 1
+    todo.context = contexts(:agenda)
     todo.description = 'foo'
     assert todo.save, "should have saved successfully" + todo.errors.to_xml
     assert_equal :deferred, todo.aasm.current_state
@@ -117,7 +117,7 @@ class TodoTest < ActiveSupport::TestCase
 
   def test_create_a_new_deferred_todo_by_passing_attributes
     user = users(:other_user)
-    todo = user.todos.build(:show_from => next_week, :context_id => 1, :description => 'foo')
+    todo = user.todos.build(:show_from => next_week, :context => contexts(:agenda), :description => 'foo')
     assert todo.save, "should have saved successfully" + todo.errors.to_xml
     assert_equal :deferred, todo.aasm.current_state
   end
@@ -224,7 +224,7 @@ class TodoTest < ActiveSupport::TestCase
   def test_initial_state_defaults_to_active
     t = Todo.new
     t.description = 'foo'
-    t.context_id = 1
+    t.context = contexts(:agenda)
     t.save!
     t.reload
     assert_equal :active, t.aasm.current_state
@@ -234,7 +234,7 @@ class TodoTest < ActiveSupport::TestCase
     t = Todo.new
     t.user = users(:admin_user)
     t.description = 'foo'
-    t.context_id = 1
+    t.context = contexts(:agenda)
     t.show_from = 1.week.from_now.to_date
     t.save!
     t.reload

@@ -17,7 +17,7 @@ timemachine:
   user_id: 1
   created_at: <%= today %>
   updated_at: <%= today %>
-  default_context_id: 5
+  default_context: lab
 
 moremoney:
   id: 2

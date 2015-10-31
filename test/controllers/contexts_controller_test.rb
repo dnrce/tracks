@@ -10,13 +10,13 @@ class ContextsControllerTest < ActionController::TestCase
   
   def test_show_sets_title
     login_as :admin_user
-    get :show, { :id => "1" }
+    get :show, { :id => contexts(:agenda).id }
     assert_equal 'TRACKS::Context: agenda', assigns['page_title']
   end
   
   def test_show_renders_show_template
     login_as :admin_user
-    get :show, { :id => "1" }
+    get :show, { :id => contexts(:agenda).id }
     assert_template "contexts/show"
   end
   
@@ -71,7 +71,7 @@ class ContextsControllerTest < ActionController::TestCase
   
   def test_show_xml_renders_context_to_xml
     login_as :admin_user
-    get :show, { :id => "1", :format => 'xml' }
+    get :show, { :id => contexts(:agenda).id, :format => 'xml' }
     assert_equal contexts(:agenda).to_xml( :except => :user_id ), @response.body
   end
   
