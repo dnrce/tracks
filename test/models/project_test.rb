@@ -124,7 +124,7 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   def test_to_param_returns_id
-    assert_equal '1', @timemachine.to_param
+    assert_equal @timemachine.id.to_s, @timemachine.to_param
   end
 
   def test_null_object

@@ -17,7 +17,7 @@ class TodoTest < ActiveSupport::TestCase
   def test_load
     assert_kind_of Todo, @not_completed1
     assert_equal contexts(:agenda).id, @not_completed1.context_id
-    assert_equal 2, @not_completed1.project_id
+    assert_equal projects(:moremoney).id, @not_completed1.project_id
     assert_equal "Call Bill Gates to find out how much he makes per day", @not_completed1.description
     assert_nil @not_completed1.notes
     assert @not_completed1.completed? == false

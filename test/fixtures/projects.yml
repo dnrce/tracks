@@ -9,7 +9,6 @@ end
 %>
 
 timemachine:
-  id: 1
   name: Build a working time machine
   description: ''
   position: 1
@@ -20,7 +19,6 @@ timemachine:
   default_context: lab
 
 moremoney:
-  id: 2
   name: Make more money than Billy Gates
   description: ''
   position: 2
@@ -30,7 +28,6 @@ moremoney:
   updated_at: <%= today %>
 
 gardenclean:
-  id: 3
   name: Evict dinosaurs from the garden
   description: ''
   position: 3
@@ -40,7 +37,6 @@ gardenclean:
   updated_at: <%= today %>
 
 attendrailsconf:
-  id: 4
   name: Attend RailsConf
   description: ''
   position: 1

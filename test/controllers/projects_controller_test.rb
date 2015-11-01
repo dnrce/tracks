@@ -46,7 +46,7 @@ class ProjectsControllerTest < ActionController::TestCase
     p = projects(:timemachine)
     todos = p.todos.active
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, "project"=>{"name"=>p.name, "description"=>p.description, "state"=>"hidden"}
+    xhr :post, :update, :id => p.id, "project"=>{"name"=>p.name, "description"=>p.description, "state"=>"hidden"}
     todos.each do |t|
       assert_equal :project_hidden, t.reload().aasm.current_state
     end
@@ -57,8 +57,8 @@ class ProjectsControllerTest < ActionController::TestCase
     p = projects(:timemachine)
     todos = p.todos.active
     login_as(:admin_user)
-    xhr :post, :update, :id => 1, "project"=>{"name"=>p.name, "description"=>p.description, "state"=>"hidden"}
-    xhr :post, :update, :id => 1, "project"=>{"name"=>p.name, "description"=>p.description, "state"=>"active"}
+    xhr :post, :update, :id => p.id, "project"=>{"name"=>p.name, "description"=>p.description, "state"=>"hidden"}
+    xhr :post, :update, :id => p.id, "project"=>{"name"=>p.name, "description"=>p.description, "state"=>"active"}
     todos.each do |t|
       assert_equal :active, t.reload().aasm.current_state
     end

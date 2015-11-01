@@ -5,7 +5,8 @@ class ProjectXmlApiTest < ActionDispatch::IntegrationTest
   @@valid_postdata = "<project><name>#{@@project_name}</name></project>"
   
   def test_retrieve_project
-    authenticated_get_xml "/projects/1.xml", users(:admin_user).login, 'abracadabra', {}
+    project = projects(:timemachine)
+    authenticated_get_xml "/projects/#{project.id}.xml", users(:admin_user).login, 'abracadabra', {}
     assert_tag :tag => "project"
     assert_tag :tag => "project", :child => {:tag => "not_done" }
     assert_tag :tag => "project", :child => {:tag => "deferred" }

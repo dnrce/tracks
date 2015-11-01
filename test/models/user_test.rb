@@ -185,22 +185,17 @@ class UserTest < ActiveSupport::TestCase
 
   def test_find_project_by_params
     u = @admin_user
-    p = u.projects.find_by_params('id' => '1')
-    assert_equal projects(:timemachine), p
-    p = u.projects.find_by_params('project_id' => '1')
-    assert_equal projects(:timemachine), p
+    p = projects(:timemachine)
+    assert_equal p, u.projects.find_by_params('id' => p.id)
+    assert_equal p, u.projects.find_by_params('project_id' => p.id)
   end
 
   def test_update_project_positions
-    assert_equal 1, Project.find(1).position
-    assert_equal 2, Project.find(2).position
-    assert_equal 3, Project.find(3).position
-
-    @admin_user.projects.update_positions([2,1,3])
-
-    assert_equal 2, Project.find(1).position
-    assert_equal 1, Project.find(2).position
-    assert_equal 3, Project.find(3).position
+    u = @admin_user
+    current_order = u.projects.map(&:id)
+    new_order = current_order.rotate
+    u.projects.update_positions new_order
+    assert_equal new_order, u.projects.reload.map(&:id)
   end
 
   def test_find_and_activate_deferred_todos_that_are_ready
@@ -314,11 +309,13 @@ class UserTest < ActiveSupport::TestCase
 
   def test_actionize_projects
     u = users(:admin_user)
-    assert_equal "1,2,3", u.projects.map(&:id).join(",")
+    project_list = [projects(:timemachine), projects(:moremoney), projects(:gardenclean)]
+    assert_equal project_list, u.projects
 
     u.projects.actionize
 
-    assert_equal "3,2,1", u.projects.reload.map(&:id).join(",")
+    actionized_project_list = [projects(:gardenclean), projects(:moremoney), projects(:timemachine)]
+    assert_equal actionized_project_list, u.projects.reload
   end
 
   def test_remember_token
@@ -349,8 +346,13 @@ class UserTest < ActiveSupport::TestCase
     u = users(:admin_user)
 
     # test group counts for projects and contexts
-    project_counts = u.todos.count_by_group(:project_id)
-    assert_equal [6,3,4,4], project_counts.values
+    project_counts = {
+      0 => 6,
+      projects(:timemachine).id => 3,
+      projects(:moremoney).id => 4,
+      projects(:gardenclean).id => 4
+    }
+    assert_equal project_counts.sort.map { |k, v| v }, u.todos.count_by_group(:project_id).values
 
     context_counts = {
       contexts(:agenda).id => 7,

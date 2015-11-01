@@ -28,7 +28,7 @@ class TodosControllerTest < ActionController::TestCase
   end
 
    def test_cached_not_done_counts_after_hiding_project
-    p = Project.find(1)
+    p = projects(:timemachine)
     p.hide!
     p.save!
     login_as(:admin_user)
@@ -39,7 +39,7 @@ class TodosControllerTest < ActionController::TestCase
   end
 
   def test_not_done_counts_after_hiding_project
-    p = Project.find(1)
+    p = projects(:timemachine)
     p.hide!
     p.save!
     login_as(:admin_user)
@@ -50,7 +50,7 @@ class TodosControllerTest < ActionController::TestCase
   end
 
   def test_not_done_counts_after_hiding_and_unhiding_project
-    p = Project.find(1)
+    p = projects(:timemachine)
     p.hide!
     p.save!
     p.activate!
@@ -318,7 +318,7 @@ class TodosControllerTest < ActionController::TestCase
     login_as(:admin_user)
     xhr :post, :update, :id => t.id, :_source_view => 'todo', "context_name"=>"library", "project_name"=>"Build a working time machine", "todo"=>{"id"=>t.id, "notes"=>"", "description"=>"Call Warren Buffet to find out how much he makes per day", "due"=>"30/11/2006"}, "tag_list"=>"foo bar"
     t.reload
-    assert_equal 1, t.project_id
+    assert_equal projects(:timemachine).id, t.project_id
   end
 
   def test_update_todo_delete_project
@@ -625,15 +625,16 @@ class TodosControllerTest < ActionController::TestCase
   def test_mobile_create_action_creates_a_new_todo
     login_as(:admin_user)
     c = contexts(:call)
+    p = projects(:timemachine)
     post :create, {"format"=>"m", "todo"=>{"context_id"=>c.id,
         "due(1i)"=>"2007", "due(2i)"=>"1", "due(3i)"=>"2",
         "show_from(1i)"=>"", "show_from(2i)"=>"", "show_from(3i)"=>"",
-        "project_id"=>"1",
+        "project_id"=>p.id,
         "notes"=>"test notes", "description"=>"test_mobile_create_action"}}
     t = Todo.where(:description => "test_mobile_create_action").first
     assert_not_nil t
     assert_equal c.id, t.context_id
-    assert_equal 1, t.project_id
+    assert_equal p.id, t.project_id
     assert t.active?
     assert_equal 'test notes', t.notes
     assert_nil t.show_from
@@ -643,10 +644,11 @@ class TodosControllerTest < ActionController::TestCase
   def test_mobile_create_action_redirects_to_mobile_home_page_when_successful
     login_as(:admin_user)
     c = contexts(:call)
+    p = projects(:timemachine)
     post :create, {"format"=>"m", "todo"=>{"context_id"=>c.id,
         "due(1i)"=>"2007", "due(2i)"=>"1", "due(3i)"=>"2",
         "show_from(1i)"=>"", "show_from(2i)"=>"", "show_from(3i)"=>"",
-        "project_id"=>"1",
+        "project_id"=>p.id,
         "notes"=>"test notes", "description"=>"test_mobile_create_action"}}
 
     assert_redirected_to '/mobile'

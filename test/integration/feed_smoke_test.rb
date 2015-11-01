@@ -45,15 +45,15 @@ class FeedSmokeTest < ActionDispatch::IntegrationTest
   end
   
   def test_all_actions_in_project_rss
-    assert_success "/projects/1/todos.rss?token=#{ users(:admin_user).token }"
+    assert_success "/projects/#{projects(:timemachine).id}/todos.rss?token=#{ users(:admin_user).token }"
   end
   
   def test_all_actions_in_project_txt
-    assert_success "/projects/1/todos.txt?token=#{ users(:admin_user).token }"
+    assert_success "/projects/#{projects(:timemachine).id}/todos.txt?token=#{ users(:admin_user).token }"
   end
   
   def test_all_actions_in_project_ical
-    assert_success "/projects/1/todos.ics?token=#{ users(:admin_user).token }"
+    assert_success "/projects/#{projects(:timemachine).id}/todos.ics?token=#{ users(:admin_user).token }"
   end
   
   def test_all_actions_due_today_or_earlier_rss

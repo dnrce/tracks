@@ -28,7 +28,7 @@ end
 
 call_bill:
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Call Bill Gates to find out how much he makes per day
   notes: ~
   state: active
@@ -39,7 +39,7 @@ call_bill:
 
 call_dino_ext:
   context: call
-  project_id: 3
+  project: gardenclean
   description: Call dinosaur exterminator
   notes: Ask him if I need to hire a skip for the corpses.
   state: active
@@ -50,7 +50,7 @@ call_dino_ext:
 
 buy_milk:
   context: errand
-  project_id: ~
+  project: ~
   description: Buy milk
   notes: ~
   state: completed
@@ -61,7 +61,7 @@ buy_milk:
 
 buy_bread:
   context: errand
-  project_id: ~
+  project: ~
   description: Buy bread
   notes: ~
   state: completed
@@ -72,7 +72,7 @@ buy_bread:
 
 construct_dilation_device:
   context: lab
-  project_id: 1
+  project: timemachine
   description: Construct time dilation device
   notes: ~
   state: active
@@ -83,7 +83,7 @@ construct_dilation_device:
 
 phone_grandfather:
   context: call
-  project_id: 1
+  project: timemachine
   description: Phone Grandfather to ask about the paradox
   notes: Added some _notes_.
   state: active
@@ -94,7 +94,7 @@ phone_grandfather:
 
 book:
   context: library
-  project_id: 3
+  project: gardenclean
   description: Get a book out of the library
   notes: 'Dinosaurs''R'
   state: active
@@ -105,7 +105,7 @@ book:
 
 upgrade_rails:
   context: errand
-  project_id: ~
+  project: ~
   description: Upgrade to Rails 0.9.1
   notes: ~
   state: completed
@@ -116,7 +116,7 @@ upgrade_rails:
 
 due_today:
   context: agenda
-  project_id: ~
+  project: ~
   description: This should be due today
   notes: ~
   state: active
@@ -127,7 +127,7 @@ due_today:
 
 foo:
   context: agenda
-  project_id: ~
+  project: ~
   description: foo
   notes: ~
   state: completed
@@ -138,7 +138,7 @@ foo:
 
 buy_shares:
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Buy shares
   notes: ~
   state: active
@@ -149,7 +149,7 @@ buy_shares:
 
 buy_stego_bait:
   context: agenda
-  project_id: 3
+  project: gardenclean
   description: Buy stegosaurus bait
   notes: ~
   state: active
@@ -160,7 +160,7 @@ buy_stego_bait:
 
 new_action_in_context:
   context: agenda
-  project_id: 3
+  project: gardenclean
   description: New action in context
   notes: Some notes
   state: active
@@ -171,7 +171,7 @@ new_action_in_context:
 
 call_stock_broker:
   context: call
-  project_id: 2
+  project: moremoney
   description: Call stock broker
   notes: 'tel: 12345'
   state: active
@@ -182,7 +182,7 @@ call_stock_broker:
 
 select_delorean_model:
   context: library
-  project_id: 1
+  project: timemachine
   description: Select Delorean model
   notes: ~
   state: deferred
@@ -194,7 +194,7 @@ select_delorean_model:
 
 buy_tix:
   context: office_otheruser
-  project_id: 4
+  project: attendrailsconf
   description: Buy tix
   notes: ~
   state: active
@@ -206,7 +206,7 @@ buy_tix:
 
 pal_confirmation:
   context: waitingfor_otheruser
-  project_id: 4
+  project: attendrailsconf
   description: Confirmation from pal
   notes: ~
   state: active
@@ -219,7 +219,7 @@ pal_confirmation:
 call_bill_gates_every_day:
   user_id: 1
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Call Bill Gates every day
   notes: ~
   state: active

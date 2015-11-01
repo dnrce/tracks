@@ -32,7 +32,7 @@ call_bill_gates_every_day:
   id: 1
   user_id: 1
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Call Bill Gates every day
   notes: ~
   state: active
@@ -59,7 +59,7 @@ call_bill_gates_every_workday:
   id: 2
   user_id: 1
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Call Bill Gates every workday
   notes: ~
   state: active
@@ -86,7 +86,7 @@ call_bill_gates_every_week:
   id: 3
   user_id: 1
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Call Bill Gates every week
   notes: ~
   state: active
@@ -113,7 +113,7 @@ check_with_bill_every_last_friday_of_month:
   id: 4
   user_id: 1
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Check with Bill every last friday of the month
   notes: ~
   state: active
@@ -140,7 +140,7 @@ birthday_reinier:
   id: 5
   user_id: 1
   context: agenda
-  project_id: 2
+  project: moremoney
   description: Congratulate Reinier on his birthday
   notes: ~
   state: active
