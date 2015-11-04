@@ -1,5 +1,7 @@
 class TodoFromRichMessage
 
+  class CannotAccessContext < RuntimeError; end
+
   attr_reader :user, :default_context_id, :description, :notes
 
   def initialize(user, default_context_id, description, notes)
