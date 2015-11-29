@@ -10,7 +10,6 @@ admin_user:
   auth_type: database
 
 other_user:
-  id: 2
   login: jane
   crypted_password: <%= BCrypt::Password.create("sesame") %>
   token: <%= Digest::SHA1.hexdigest("janeSun Feb 19 14:42:45 GMT 20060.408173979260027") %>

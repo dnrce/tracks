@@ -5,7 +5,7 @@ class PreferenceTest < ActiveSupport::TestCase
 
   def setup
     @admin_user = User.find(1)
-    @other_user = User.find(2)
+    @other_user = users(:other_user)
   end
 
   def test_time_zone

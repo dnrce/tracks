@@ -20,7 +20,7 @@ class TodoFromRichMessageTest < ActiveSupport::TestCase
 
   def test_from_rich_message_adds_all_fields
     user = @completed.user
-    context = Context.create(:name => 'context')
+    context = Context.create(user: user, name: 'context')
     project = Project.create(:name => 'project')
     message = "description@context~project>131014<131017#tag1#tag2*"
     builder = TodoFromRichMessage.new(user, context.id, message, "notes")

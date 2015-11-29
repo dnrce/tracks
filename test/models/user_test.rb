@@ -5,7 +5,7 @@ class UserTest < ActiveSupport::TestCase
 
   def setup
     @admin_user = User.find(1)
-    @other_user = User.find(2)
+    @other_user = users(:other_user)
   end
 
   # Test an admin user model
@@ -22,7 +22,6 @@ class UserTest < ActiveSupport::TestCase
   # Test a non-admin user model
   def test_non_admin
     assert_kind_of User, @other_user
-    assert_equal 2, @other_user.id
     assert_equal "jane", @other_user.login
     assert_not_nil @other_user.crypted_password
     assert_not_nil @other_user.token
