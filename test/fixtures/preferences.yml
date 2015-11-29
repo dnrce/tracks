@@ -35,7 +35,7 @@ other_user_prefs:
 
 sms_user_prefs:
   id: 3
-  user_id: 4
+  user: sms_user
   staleness_starts: 7
   date_format: "%d/%m/%Y"
   title_date_format: "%A, %d %B %Y"

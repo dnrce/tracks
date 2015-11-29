@@ -109,7 +109,7 @@ inbox:
   name: Inbox
   position: 1
   state: active
-  user_id: 4
+  user: sms_user
   created_at: <%= today %>
   updated_at: <%= today %>
 
@@ -117,6 +117,6 @@ anothercontext:
   name: anothercontext
   position: 2
   state: active
-  user_id: 4
+  user: sms_user
   created_at: <%= today %>
   updated_at: <%= today %>
