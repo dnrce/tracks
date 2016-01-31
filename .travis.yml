@@ -28,3 +28,6 @@ notifications:
   irc:
     channels: "chat.freenode.net#tracks"
     skip_join: true
+
+addons:
+  firefox: latest
