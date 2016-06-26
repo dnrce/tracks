@@ -64,7 +64,7 @@ class MessageGateway < ActionMailer::Base
   end
 
   def get_receiving_user_from_email_address(email)
-    SITE_CONFIG['email_dispatch'] == 'single_user' ? get_receiving_user_from_env_setting : get_receiving_user_from_mail_header(email)
+    Settings.email_dispatch == 'single_user' ? get_receiving_user_from_env_setting : get_receiving_user_from_mail_header(email)
   end
 
   def get_receiving_user_from_env_setting
@@ -81,7 +81,7 @@ class MessageGateway < ActionMailer::Base
   end
 
   def get_address(email)
-    return SITE_CONFIG['email_dispatch'] == 'to' ?  email.to[0] :  email.from[0]
+    return Settings.email_dispatch == 'to' ?  email.to[0] :  email.from[0]
   end
 
   def get_receiving_user_from_sms_email(address)
@@ -100,9 +100,9 @@ class MessageGateway < ActionMailer::Base
   end
 
   def sender_is_in_mailmap?(user,email)
-    if SITE_CONFIG['mailmap'].is_a? Hash and SITE_CONFIG['email_dispatch'] == 'to'
+    if Settings.mailmap.is_a? Hash and Settings.email_dispatch == 'to'
       # Look for the sender in the map of allowed senders
-      SITE_CONFIG['mailmap'][user.preference.sms_email].include? email.from[0]
+      Settings.mailmap[user.preference.sms_email].include? email.from[0]
     else
       # We can't check the map if it's not defined, or if the lookup is the
       # wrong way round, so just allow it

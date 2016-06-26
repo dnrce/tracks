@@ -2,13 +2,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
-# set config for tests. Overwrite those read from config/site.yml. Use inject to avoid warning about changing CONSTANT
-{
-  "authentication_schemes" => ["database"],
-  "prefered_auth" => "database",
-  "email_dispatch" => nil,
-  "time_zone" => "Amsterdam"  # force UTC+1 so Travis triggers time zone failures
-}.inject( SITE_CONFIG ) { |h, elem| h[elem[0]] = elem[1]; h }
+# set config for tests. Overwrite those read from config/settings.yml.
+Settings.authentication_schemes = ["database"]
+Settings.prefered_auth = "database"
+Settings.email_dispatch = nil
+Settings.time_zone = "Amsterdam"
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
@@ -18,7 +16,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   def setup
-    Time.zone = SITE_CONFIG['time_zone']
+    Time.zone = Settings.time_zone
     @today = Time.zone.now
     @tomorrow = @today + 1.day
     @in_three_days = @today + 3.days

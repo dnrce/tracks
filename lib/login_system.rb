@@ -17,7 +17,7 @@ module LoginSystem
     @user.forget_me if logged_in?
     cookies.delete :auth_token
     session['user_id'] = nil
-    if ( SITE_CONFIG['authentication_schemes'].include? 'cas')  && session[:cas_user]
+    if Tracks::Config.cas_enabled? && session[:cas_user]
       CASClient::Frameworks::Rails::Filter.logout(self)
     else
       reset_session
@@ -65,7 +65,7 @@ module LoginSystem
       session['user_id'] = user.id
       set_current_user(user)
       current_user.remember_me
-      cookies[:auth_token] = { :value => current_user.remember_token , :expires => current_user.remember_token_expires_at, :secure => SITE_CONFIG['secure_cookies'] }
+      cookies[:auth_token] = { :value => current_user.remember_token , :expires => current_user.remember_token_expires_at, :secure => Settings.secure_cookies }
       flash[:notice] = t('login.successful')
     end
   end

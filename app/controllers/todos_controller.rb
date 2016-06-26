@@ -37,7 +37,7 @@ class TodosController < ApplicationController
         @page_title = t('todos.mobile_todos_page_title')
         @home = true
 
-        cookies[:mobile_url]= { :value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
+        cookies[:mobile_url]= { :value => request.fullpath, :secure => Settings.secure_cookies}
         determine_down_count
 
         render :action => 'index'.freeze
@@ -356,7 +356,7 @@ class TodosController < ApplicationController
         if @saved
           if cookies[:mobile_url]
             old_path = cookies[:mobile_url]
-            cookies[:mobile_url] = {:value => nil, :secure => SITE_CONFIG['secure_cookies']}
+            cookies[:mobile_url] = {:value => nil, :secure => Settings.secure_cookies}
             notify(:notice, t("todos.action_marked_complete", :description => @todo.description, :completed => @todo.completed? ? 'complete' : 'incomplete'))
             onsite_redirect_to old_path
           else
@@ -381,7 +381,7 @@ class TodosController < ApplicationController
       format.m {
         if cookies[:mobile_url]
           old_path = cookies[:mobile_url]
-          cookies[:mobile_url] = {:value => nil, :secure => SITE_CONFIG['secure_cookies']}
+          cookies[:mobile_url] = {:value => nil, :secure => Settings.secure_cookies}
           notify(:notice, "Star toggled")
           onsite_redirect_to old_path
         else
@@ -667,7 +667,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       format.html
       format.m {
-        cookies[:mobile_url]= {:value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
+        cookies[:mobile_url]= {:value => request.fullpath, :secure => Settings.secure_cookies}
       }
       format.text {
         render :action => 'index', :layout => false, :content_type => Mime::TEXT
@@ -839,7 +839,7 @@ class TodosController < ApplicationController
   def do_mobile_todo_redirection
     if cookies[:mobile_url]
       old_path = cookies[:mobile_url]
-      cookies[:mobile_url] = {:value => nil, :secure => SITE_CONFIG['secure_cookies']}
+      cookies[:mobile_url] = {:value => nil, :secure => Settings.secure_cookies}
       onsite_redirect_to old_path
     else
       onsite_redirect_to todos_path(:format => 'm')

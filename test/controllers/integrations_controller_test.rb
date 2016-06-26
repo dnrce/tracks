@@ -1,8 +1,8 @@
 require 'test_helper'
-require 'support/stub_site_config_helper'
+require 'support/stub_settings_helper'
 
 class IntegrationsControllerTest < ActionController::TestCase
-  include StubSiteConfigHelper
+  include StubSettingsHelper
 
   def setup
   end
@@ -14,9 +14,9 @@ class IntegrationsControllerTest < ActionController::TestCase
   end
   
   def test_cloudmailin_integration_success
-    stub_site_config do
-      SITE_CONFIG['cloudmailin'] = "123456789"
-      SITE_CONFIG['email_dispatch'] = 'from'
+    stub_settings do
+      Settings.cloudmailin = "123456789"
+      Settings.email_dispatch = 'from'
       post :cloudmailin, {
         "html"=>"",
         "plain"=>"asdasd",
@@ -35,8 +35,8 @@ class IntegrationsControllerTest < ActionController::TestCase
   end
   
   def test_cloudmailin_integration_invalid_signature
-    stub_site_config do
-      SITE_CONFIG['cloudmailin'] = "12345678901234567890"
+    stub_settings do
+      Settings.cloudmailin = "12345678901234567890"
       post :cloudmailin, {
         "html"=>"",
         "plain"=>"asdasd",
@@ -55,8 +55,8 @@ class IntegrationsControllerTest < ActionController::TestCase
   end
   
   def test_cloudmailin_integration_unknown_address
-    stub_site_config do
-      SITE_CONFIG['cloudmailin'] = "123456789"
+    stub_settings do
+      Settings.cloudmailin = "123456789"
       post :cloudmailin, {
         "html"=>"",
         "plain"=>"asdasd",

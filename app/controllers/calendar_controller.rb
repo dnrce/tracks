@@ -14,7 +14,7 @@ class CalendarController < ApplicationController
     respond_to do |format|
       format.html
       format.m {
-        cookies[:mobile_url]= {:value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
+        cookies[:mobile_url]= {:value => request.fullpath, :secure => Settings.secure_cookies}
       }
       format.ics   {
         render :action => 'show', :layout => false, :content_type => Mime::ICS

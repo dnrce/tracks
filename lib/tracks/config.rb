@@ -3,7 +3,7 @@ module Tracks
   class Config
 
     def self.auth_schemes
-       SITE_CONFIG['authentication_schemes'] || []
+      Settings.authentication_schemes || []
     end
     
     def self.openid_enabled?
@@ -15,11 +15,7 @@ module Tracks
     end
     
     def self.prefered_auth?
-      if SITE_CONFIG['prefered_auth']
-        SITE_CONFIG['prefered_auth']
-      else
-        auth_schemes.first
-      end
+      Settings.preferred_auth || auth_schemes.first
     end
     
   end

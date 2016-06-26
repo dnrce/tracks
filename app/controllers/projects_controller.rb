@@ -35,7 +35,7 @@ class ProjectsController < ApplicationController
         format.m     do
           @completed_projects = current_user.projects.completed
           @down_count = @active_projects.size + @hidden_projects.size + @completed_projects.size
-          cookies[:mobile_url]= {:value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
+          cookies[:mobile_url]= {:value => request.fullpath, :secure => Settings.secure_cookies}
         end
         format.xml   { render :xml => @projects.to_xml( :except => :user_id )  }
         format.any(:rss, :atom) do
@@ -154,7 +154,7 @@ class ProjectsController < ApplicationController
         else
           @project_default_context = t('projects.default_context', :context => @project.default_context.name)
         end
-        cookies[:mobile_url]= {:value => request.fullpath, :secure => SITE_CONFIG['secure_cookies']}
+        cookies[:mobile_url]= {:value => request.fullpath, :secure => Settings.secure_cookies}
         @mobile_from_project = @project.id
       end
       format.xml   do

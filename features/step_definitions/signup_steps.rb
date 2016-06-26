@@ -1,9 +1,9 @@
 Given /^public signups are turned (.*)$/ do |state|
   case state
   when 'on'
-    SITE_CONFIG['open_signups'] = true
+    Settings.open_signups = true
   when 'off'
-    SITE_CONFIG['open_signups'] = false
+    Settings.open_signups = false
   else
     raise "public signups should be either 'on' or 'off'"
   end

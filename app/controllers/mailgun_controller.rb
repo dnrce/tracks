@@ -26,7 +26,7 @@ class MailgunController < ApplicationController
   def verify
     unless params['signature'] == OpenSSL::HMAC.hexdigest(
             OpenSSL::Digest.new('sha256'),
-            SITE_CONFIG['mailgun_api_key'],
+            Settings.mailgun_api_key,
             '%s%s' % [params['timestamp'], params['token']]
          )
       Rails.logger.info "Cannot verify Mailgun signature"

@@ -38,7 +38,7 @@ class IntegrationsController < ApplicationController
 
   def verify_cloudmailin_signature
     provided = request.request_parameters.delete(:signature)
-    signature = Digest::MD5.hexdigest(flatten_params(request.request_parameters).sort.map{|k,v| v}.join + SITE_CONFIG['cloudmailin'])
+    signature = Digest::MD5.hexdigest(flatten_params(request.request_parameters).sort.map{|k,v| v}.join + Settings.cloudmailin)
     return provided == signature
   end
 
@@ -57,4 +57,3 @@ class IntegrationsController < ApplicationController
   end
 
 end
-

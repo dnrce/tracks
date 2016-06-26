@@ -59,10 +59,10 @@ class LoginController < ApplicationController
       session['noexpiry'] = params['user_noexpiry']
       msg = (should_expire_sessions?) ? "will expire after 1 hour of inactivity." : "will not expire."
       notify :notice, "Login successful: session #{msg}"
-      cookies[:tracks_login] = { :value => @user.login, :expires => Time.now + 1.year, :secure => SITE_CONFIG['secure_cookies'] }
+      cookies[:tracks_login] = { :value => @user.login, :expires => Time.now + 1.year, :secure => Settings.secure_cookies }
       unless should_expire_sessions?
         @user.remember_me
-        cookies[:auth_token] = { :value => @user.remember_token , :expires => @user.remember_token_expires_at, :secure => SITE_CONFIG['secure_cookies'] }
+        cookies[:auth_token] = { :value => @user.remember_token , :expires => @user.remember_token_expires_at, :secure => Settings.secure_cookies }
       end
       redirect_back_or_home
     end

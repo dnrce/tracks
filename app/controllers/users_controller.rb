@@ -41,13 +41,13 @@ class UsersController < ApplicationController
       @page_title = t('users.first_user_title')
       @heading = t('users.first_user_heading')
       @user = get_new_user
-    elsif (@user && @user.is_admin?) || SITE_CONFIG['open_signups']
+    elsif (@user && @user.is_admin?) || Settings.open_signups
       @page_title = t('users.new_user_title')
       @heading = t('users.new_user_heading')
       @user = get_new_user
     else # all other situations (i.e. a non-admin is logged in, or no one is logged in, but we have some users)
       @page_title = t('users.no_signups_title')
-      @admin_email = SITE_CONFIG['admin_email']
+      @admin_email = Settings.admin_email
       render :action => "nosignup", :layout => "login"
       return
     end
@@ -69,9 +69,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html do
-        unless User.no_users_yet? || (@user && @user.is_admin?) || SITE_CONFIG['open_signups']
+        unless User.no_users_yet? || (@user && @user.is_admin?) || Settings.open_signups
           @page_title = t('users.no_signups_title')
-          @admin_email = SITE_CONFIG['admin_email']
+          @admin_email = Settings.admin_email
           render :action => "nosignup", :layout => "login"
           return
         end

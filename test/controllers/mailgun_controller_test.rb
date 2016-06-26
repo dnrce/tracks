@@ -1,8 +1,8 @@
 require 'test_helper'
-require 'support/stub_site_config_helper'
+require 'support/stub_settings_helper'
 
 class MailgunControllerTest < ActionController::TestCase
-  include StubSiteConfigHelper
+  include StubSettingsHelper
 
   def setup
     @user = users(:sms_user)
@@ -14,9 +14,9 @@ class MailgunControllerTest < ActionController::TestCase
   end
 
   def test_mailgun_signature_verifies
-    stub_site_config do
-      SITE_CONFIG['mailgun_api_key'] = "123456789"
-      SITE_CONFIG['email_dispatch']  = 'from'
+    stub_settings do
+      Settings.mailgun_api_key = "123456789"
+      Settings.email_dispatch  = 'from'
 
       post :mailgun, {
         "timestamp" => "1379539674",
@@ -30,10 +30,10 @@ class MailgunControllerTest < ActionController::TestCase
   end
 
   def test_mailgun_creates_todo_with_mailmap
-    stub_site_config do
-      SITE_CONFIG['mailgun_api_key'] = "123456789"
-      SITE_CONFIG['email_dispatch']  = 'to'
-      SITE_CONFIG['mailmap']         = {
+    stub_settings do
+      Settings.mailgun_api_key = "123456789"
+      Settings.email_dispatch  = 'to'
+      Settings.mailmap         = {
         '5555555555@tmomail.net' => ['incoming@othermail.com', 'notused@foo.org']
       }
 
@@ -56,9 +56,9 @@ class MailgunControllerTest < ActionController::TestCase
   end
 
   def test_mailgun_signature_fails
-    stub_site_config do
-      SITE_CONFIG['mailgun_api_key'] = "invalidkey"
-      SITE_CONFIG['email_dispatch']  = 'from'
+    stub_settings do
+      Settings.mailgun_api_key = "invalidkey"
+      Settings.email_dispatch  = 'from'
 
       post :mailgun, {
         "timestamp" => "1379539674",

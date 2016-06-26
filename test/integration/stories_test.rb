@@ -1,8 +1,8 @@
 require 'test_helper'
-require 'support/stub_site_config_helper'
+require 'support/stub_settings_helper'
 
 class StoriesTest < ActionDispatch::IntegrationTest
-  include StubSiteConfigHelper
+  include StubSettingsHelper
   
   # ####################################################
   # Testing login and signup by different kinds of users
@@ -16,16 +16,16 @@ class StoriesTest < ActionDispatch::IntegrationTest
   end
   
   def test_signup_new_user_by_nonadmin
-    stub_site_config do
-      SITE_CONFIG['open_signups'] = false
+    stub_settings do
+      Settings.open_signups = false
       other_user = new_session_as(:other_user,"sesame")
       other_user.goes_to_signup_as_nonadmin
     end
   end
   
   def test_open_signup_new_user
-    stub_site_config do
-      SITE_CONFIG['open_signups'] = true
+    stub_settings do
+      Settings.open_signups = true
       get "/signup"
       assert_response :success
       assert_template "users/new"
