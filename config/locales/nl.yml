@@ -685,11 +685,6 @@ nl:
       number_of_actions: Aantal acties
     actions_dow_30days_title: Dag van de week (laatste 30 dagen)
     actions_further: en verder
-    actions_lastyear_title: Acties in de afgelopen 12 maanden
-    actions_last_year: Acties in de afgelopen jaren
-    actions_last_year_legend:
-      months_ago: Maanden geleden
-      number_of_actions: Aantal acties
     actions_min_completion_time: De minimale tijd tot afronding is %{time}.
     actions_min_max_completion_days: De min-/maximum dagen tot voltooiing is %{min}/%{max}.
     actions_selected_from_week: Gekozen acties van week

@@ -626,11 +626,6 @@ fr:
       number_of_actions: Certain nombre d'actions
     actions_dow_30days_title: Jour de la semaine (les 30 derniers jours)
     actions_further: et plus
-    actions_lastyear_title: Actions des 12 derniers mois
-    actions_last_year: Actions des dernières années
-    actions_last_year_legend:
-      months_ago: Mois précédents
-      number_of_actions: Nombre d'actions
     actions_min_completion_time: Le temps minimum de réalisation est %{time}.
     actions_min_max_completion_days: Le nombre min/max de jours pour réaliser est
       %{min}/%{max}.

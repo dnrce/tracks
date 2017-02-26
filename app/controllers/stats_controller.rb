@@ -46,39 +46,6 @@ class StatsController < ApplicationController
     Time.zone.now.day / Time.zone.now.end_of_month.day.to_f
   end
 
-  def actions_done_last_years
-    @page_title = t('stats.index_title')
-    @chart = Stats::Chart.new('actions_done_lastyears_data', :height => 400, :width => 900)
-  end
-
-  def actions_done_lastyears_data
-    actions_last_months = current_user.todos.select("completed_at,created_at")
-
-    month_count = difference_in_months(@today, actions_last_months.minimum(:created_at))
-    # because this action is not scoped by date, the minimum created_at should always be
-    # less than the minimum completed_at, so no reason to check minimum completed_at
-
-    # convert to array and fill in non-existing months
-    @actions_done_last_months_array = put_events_into_month_buckets(actions_last_months, month_count+1, :completed_at)
-    @actions_created_last_months_array = put_events_into_month_buckets(actions_last_months, month_count+1, :created_at)
-
-    # find max for graph in both hashes
-    @max = (@actions_done_last_months_array + @actions_created_last_months_array).max
-
-    # set running avg
-    @actions_done_avg_last_months_array = compute_running_avg_array(@actions_done_last_months_array,month_count+1)
-    @actions_created_avg_last_months_array = compute_running_avg_array(@actions_created_last_months_array,month_count+1)
-
-    # interpolate avg for this month.
-    @interpolated_actions_created_this_month = interpolate_avg_for_current_month(@actions_created_last_months_array)
-    @interpolated_actions_done_this_month = interpolate_avg_for_current_month(@actions_done_last_months_array)
-
-    @created_count_array = Array.new(month_count+1, actions_last_months.select { |x| x.created_at }.size/month_count)
-    @done_count_array    = Array.new(month_count+1, actions_last_months.select { |x| x.completed_at }.size/month_count)
-
-    render :layout => false
-  end
-
   def actions_done_last30days_data
     # get actions created and completed in the past 30 days.
     @actions_done_last30days = current_user.todos.completed_after(@cut_off_30days).select("completed_at")

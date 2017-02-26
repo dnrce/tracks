@@ -700,11 +700,6 @@ ru:
       number_of_actions: "Количество действий"
     actions_dow_30days_title: "Дни недели (за последние 30 дней)"
     actions_further: "и далее"
-    actions_lastyear_title: "Действия за последние 12 месяцев"
-    actions_last_year: "Действия за последние годы"
-    actions_last_year_legend:
-      months_ago: "Месяцев назад"
-      number_of_actions: "Количество действий"
     actions_min_completion_time: "Минимальное время выполнения %{time}."
     actions_min_max_completion_days: "Минимум/максимум дней до выполнения %{min}/%{max}."
     actions_selected_from_week: "Действия, выбранные из недели"

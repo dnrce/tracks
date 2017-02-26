@@ -837,9 +837,6 @@ en:
     tag_cloud_90days_title: Tag cloud actions in past 90 days
     actions: Actions
     totals_active_project_count: Of those %{count} are active projects
-    actions_last_year_legend:
-      number_of_actions: Number of actions
-      months_ago: Months ago
     totals_first_action: Since your first action on %{date}
     actions_avg_completion_time: Of all your completed actions, the average time to complete is %{count} days.
     top10_longrunning: Top 10 longest running projects
@@ -874,7 +871,6 @@ en:
     totals_blocked_actions: "%{count} are dependent on the completion of their actions."
     projects: Projects
     action_completion_time_title: Completion time (all completed actions)
-    actions_last_year: Actions in the last years
     actions_min_max_completion_days: The Min-/maximum days to complete is %{min}/%{max}.
     tags: Tags
     actions_min_completion_time: The minimum time to complete is %{time}.

@@ -38,8 +38,6 @@ Rails.application.routes.draw do
 
   get 'stats' => 'stats#index'
   get 'stats/actions_done_last12months_data' => 'stats#actions_done_last12months_data'
-  get 'stats/actions_done_last_years' => 'stats#actions_done_last_years'
-  get 'stats/actions_done_lastyears_data' => 'stats#actions_done_lastyears_data'
   get 'stats/actions_done_last30days_data' => 'stats#actions_done_last30days_data'
   get 'stats/actions_completion_time_data' => 'stats#actions_completion_time_data'
   get 'stats/actions_running_time_data' => 'stats#actions_running_time_data'

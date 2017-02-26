@@ -524,11 +524,6 @@ he:
       number_of_actions: "מספר פעולות"
     actions_dow_30days_title: "יום בשבוע (30 הימים האחרונים("
     actions_further: "ואילך"
-    actions_lastyear_title: "פעולות ב-12 החודשים האחרונים"
-    actions_last_year: "פעולות בשנים האחרונות"
-    actions_last_year_legend:
-      months_ago: "חודשים קודם"
-      number_of_actions: "מספר הפעולות"
     actions_min_completion_time: "הזמן המזערי לסיום הוא %{time}."
     actions_min_max_completion_days: "יחס זמן מיזערי/מירבי לסיום הוא %{min}/%{max}."
     actions_selected_from_week: "פעולות נבחרות משבוע"

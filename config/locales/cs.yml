@@ -582,11 +582,6 @@ cs:
       number_of_actions: Počet akcí
     actions_dow_30days_title: Dny v týdnu (posleních 30 dní)
     actions_further: a dále
-    actions_lastyear_title: "Úkoly za posledních 12 měsíců"
-    actions_last_year: "Úkoly v posledním roce"
-    actions_last_year_legend:
-      months_ago: měsíců zpět
-      number_of_actions: Počet úklolů
     actions_min_completion_time: Minimální čas k dokončení je %{time}.
     actions_min_max_completion_days: Minimum/maximum dní na dokončení je %{min}/%{max}.
     actions_selected_from_week: "Úkoly vybrané z týdne"

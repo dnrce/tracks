@@ -191,24 +191,6 @@ class StatsControllerTest < ActionController::TestCase
     assert_equal 2, assigns['max'], "two actions created on one day is max"
   end
 
-  def test_actions_done_lastyears_data
-    login_as(:admin_user)
-    @current_user = User.find(users(:admin_user).id)
-    @current_user.todos.delete_all
-
-    given_todos_for_stats
-
-    # When I get the chart data
-    get :actions_done_lastyears_data
-    assert_response :success
-
-    # only tests difference with actions_done_last_12months_data
-
-    # And the last two months are corrected
-    assert_equal 2/3.0, assigns['actions_done_avg_last_months_array'][23]
-    assert_equal 2/3.0, assigns['actions_done_avg_last_months_array'][24]
-  end
-
   def test_actions_completion_time_data
     login_as(:admin_user)
     @current_user = User.find(users(:admin_user).id)

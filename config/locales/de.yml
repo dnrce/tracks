@@ -591,11 +591,6 @@ de:
       number_of_actions: Anzahl der Aufgaben
     actions_dow_30days_title: Wochentag (letzte 30 Tage)
     actions_further: und danach
-    actions_lastyear_title: Aufgaben der letzten 12 Monate
-    actions_last_year: Aufgaben im letzten Jahr
-    actions_last_year_legend:
-      months_ago: Monate zuvor
-      number_of_actions: Anzahl Aufgaben
     actions_min_completion_time: Die minimale Zeit beträgt %{time}.
     actions_min_max_completion_days: Das Minimum/Maximum in Tagen zur Erledigung ist
       %{min}/%{max}.
