@@ -80,8 +80,6 @@ class StatsController < ApplicationController
 
     # get percentage done cumulative
     @cum_percent_done = convert_to_cumulative_array(@actions_completion_time_array, @actions_completion_time.count(:all))
-
-    render :layout => false
   end
 
   def actions_running_time_data

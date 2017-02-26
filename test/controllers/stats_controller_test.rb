@@ -16,7 +16,6 @@ class StatsControllerTest < ActionController::TestCase
   def test_get_charts
     login_as(:admin_user)
     %w{
- 	    actions_completion_time_data
       actions_visible_running_time_data
   	  actions_running_time_data
       actions_open_per_week_data
@@ -33,6 +32,7 @@ class StatsControllerTest < ActionController::TestCase
     %w(
       actions_done_last30days_data
       actions_done_last12months_data
+      actions_completion_time_data
     ).each do |action|
       get action, format: :json
       assert_response :success
@@ -199,7 +199,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_completion_time_data
+    get :actions_completion_time_data, format: :json
     assert_response :success
 
     # do not test stuff already implicitly tested in other tests
