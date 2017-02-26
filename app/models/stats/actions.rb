@@ -30,7 +30,6 @@ module Stats
 
     def completion_charts
       @completion_charts ||= %w{
-     actions_done_last12months_data
      actions_completion_time_data
       }.map do |action|
         Stats::Chart.new(action)
@@ -40,6 +39,7 @@ module Stats
     def completion_charts_js
       @completion_charts_js ||= %w(
         actions_done_last30days_data
+        actions_done_last12months_data
       ).map { |action| Stats::Chart.new(action) }
     end
 

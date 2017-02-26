@@ -16,7 +16,6 @@ class StatsControllerTest < ActionController::TestCase
   def test_get_charts
     login_as(:admin_user)
     %w{
-      actions_done_last12months_data
  	    actions_completion_time_data
       actions_visible_running_time_data
   	  actions_running_time_data
@@ -33,6 +32,7 @@ class StatsControllerTest < ActionController::TestCase
 
     %w(
       actions_done_last30days_data
+      actions_done_last12months_data
     ).each do |action|
       get action, format: :json
       assert_response :success
@@ -115,7 +115,7 @@ class StatsControllerTest < ActionController::TestCase
         given_todos_for_stats
 
         # When I get the chart data
-        get :actions_done_last12months_data
+        get :actions_done_last12months_data, format: :json
         assert_response :success
 
         # Then the todos for the chart should be retrieved
@@ -144,8 +144,8 @@ class StatsControllerTest < ActionController::TestCase
 
         # And the current month should be interpolated
         fraction = Time.zone.now.day.to_f / Time.zone.now.end_of_month.day.to_f
-        assert_equal (2*(1/fraction)+2)/3.0, assigns['interpolated_actions_created_this_month'], "two this month and one in the last two months"
-        assert_equal (2)/3.0, assigns['interpolated_actions_done_this_month'], "none this month and one two the last two months"
+        assert_equal (2*(1/fraction)+2)/3.0, assigns['actions_created_avg_last12months_array'][0], "two this month and one in the last two months"
+        assert_equal (2)/3.0, assigns['actions_done_avg_last12months_array'][0], "none this month and one two the last two months"
 
         # And totals should be calculated
         assert_equal 2, assigns['max'], "max of created or completed todos in one month"
@@ -158,7 +158,7 @@ class StatsControllerTest < ActionController::TestCase
       @current_user = User.find(users(:admin_user).id)
       @current_user.todos.delete_all
       given_todos_for_stats
-      get :actions_done_last12months_data
+      get :actions_done_last12months_data, format: :json
       assert_response :success
     end
   end
@@ -170,7 +170,7 @@ class StatsControllerTest < ActionController::TestCase
     create_todo_in_past(2.years)
     create_todo_in_past(15.months)
 
-    get :actions_done_last12months_data
+    get :actions_done_last12months_data, format: :json
     assert_response :success
   end
 

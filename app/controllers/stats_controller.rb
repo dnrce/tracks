@@ -31,12 +31,11 @@ class StatsController < ApplicationController
     @actions_created_avg_last12months_array = compute_running_avg_array(created_in_last_15_months, 13)
 
     # interpolate avg for current month.
-    @interpolated_actions_created_this_month = interpolate_avg_for_current_month(@actions_created_last12months_array)
-    @interpolated_actions_done_this_month = interpolate_avg_for_current_month(@actions_done_last12months_array)
+    @actions_created_avg_last12months_array[0] = interpolate_avg_for_current_month(@actions_created_last12months_array)
+    @actions_done_avg_last12months_array[0] = interpolate_avg_for_current_month(@actions_done_last12months_array)
 
     @created_count_array = Array.new(13, actions_last12months.created_after(@cut_off_year).count(:all)/12.0)
     @done_count_array    = Array.new(13, actions_last12months.completed_after(@cut_off_year).count(:all)/12.0)
-    render :layout => false
   end
 
   def interpolate_avg_for_current_month(set)
