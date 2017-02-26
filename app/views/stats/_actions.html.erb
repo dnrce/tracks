@@ -5,6 +5,10 @@
 <%= t('stats.actions_avg_created', :count => (actions.created_last12months*10.0/12.0).round/10.0 )%>
 <%= t('stats.actions_avg_completed', :count => (actions.done_last12months*10.0/12.0).round/10.0 )%></p>
 
+<% actions.completion_charts_js.each do |chart| %><%=
+    render :partial => 'chart_js', :locals => {:chart => chart}
+-%><% end %>
+
 <% actions.completion_charts.each do |chart| %><%=
     render :partial => 'chart', :locals => {:chart => chart}
 -%><% end %>
@@ -14,4 +18,3 @@
 <% actions.timing_charts.each do |chart| %><%=
     render :partial => 'chart', :locals => {:chart => chart}
 -%><% end %>
-

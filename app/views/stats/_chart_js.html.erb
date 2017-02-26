@@ -1,0 +1,13 @@
+<%
+@swf_count ||= 0
+@swf_count += 1
+chart_id = "chart_#{@swf_count}"
+-%>
+<div class="stats_chart">
+  <canvas id="<%= chart_id %>" width="<%= chart.width %>" height="<%= chart.height %>"></canvas>
+  <script>
+    $.get("<%= url_for(action: chart.action, format: :json) %>", function(data) {
+      new Chart('<%= chart_id %>', data)
+    })
+  </script>
+</div>

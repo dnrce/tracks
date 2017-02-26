@@ -16,7 +16,6 @@ class StatsControllerTest < ActionController::TestCase
   def test_get_charts
     login_as(:admin_user)
     %w{
-      actions_done_last30days_data
       actions_done_last12months_data
  	    actions_completion_time_data
       actions_visible_running_time_data
@@ -30,6 +29,14 @@ class StatsControllerTest < ActionController::TestCase
       get action
       assert_response :success
       assert_template "stats/"+action
+    end
+
+    %w(
+      actions_done_last30days_data
+    ).each do |action|
+      get action, format: :json
+      assert_response :success
+      assert_template "stats/" + action
     end
 
     %w{
@@ -175,7 +182,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_done_last30days_data
+    get :actions_done_last30days_data, format: :json
     assert_response :success
 
     # only tests relevant differences with actions_done_last_12months_data

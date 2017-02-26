@@ -31,6 +31,7 @@ gem "acts_as_list"
 gem "aasm"
 gem "htmlentities"
 gem "swf_fu"
+gem "chart-js-rails"
 gem "rails_autolink"
 gem 'thin'
 gem 'paperclip'

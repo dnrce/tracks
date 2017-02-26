@@ -92,7 +92,10 @@ class StatsController < ApplicationController
     # find max for graph in both hashes
     @max = [@actions_done_last30days_array.max, @actions_created_last30days_array.max].max
 
-    render :layout => false
+    @created_count_array = Array.new(30) { @actions_created_last30days.size / 30.0 }
+    @done_count_array = Array.new(30) { @actions_done_last30days.size / 30.0 }
+    # TODO: make the strftime i18n proof
+    @time_labels = Array.new(30) { |i| l(Time.zone.now - i.days, format: :stats) }
   end
 
   def actions_completion_time_data

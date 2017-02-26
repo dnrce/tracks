@@ -21,6 +21,9 @@
 //= require jquery-ui/effect-highlight
 //= require jquery-ui/sortable
 
+// chart-js-rails gem
+//= require Chart
+
 // Stuff in app/assets
 //= require tracks
 //= require tracks_pages
