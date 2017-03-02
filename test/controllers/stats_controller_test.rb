@@ -43,7 +43,7 @@ class StatsControllerTest < ActionController::TestCase
       context_total_actions_data
       context_running_actions_data
     }.each do |action|
-      get action
+      get action, format: :json
       assert_response :success
       assert_template "stats/pie_chart_data"
     end
@@ -277,7 +277,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :context_total_actions_data
+    get :context_total_actions_data, format: :json
     assert_response :success
 
     assert_equal 9, assigns['data'].sum, "Nine todos in 1 context"
@@ -290,7 +290,7 @@ class StatsControllerTest < ActionController::TestCase
     end
 
     # When I get the chart data
-    get :context_total_actions_data
+    get :context_total_actions_data, format: :json
     assert_response :success
 
     assert_equal 19, assigns['data'].sum, "added 10 todos"
@@ -307,7 +307,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :context_running_actions_data
+    get :context_running_actions_data, format: :json
     assert_response :success
 
     assert_equal 4, assigns['data'].sum, "Four todos in 1 context"
@@ -320,7 +320,7 @@ class StatsControllerTest < ActionController::TestCase
     end
 
     # When I get the chart data
-    get :context_running_actions_data
+    get :context_running_actions_data, format: :json
     assert_response :success
 
     assert_equal 10, assigns['data'].values.size, "pie slices limited to max 10"

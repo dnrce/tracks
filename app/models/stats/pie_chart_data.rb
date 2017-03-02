@@ -1,11 +1,10 @@
 module Stats
   class PieChartData
 
-    attr_reader :all_totals, :alpha, :title
-    def initialize(all_totals, title, alpha)
+    attr_reader :all_totals, :title
+    def initialize(all_totals, title)
       @all_totals = all_totals
       @title = title
-      @alpha = alpha
     end
 
     def values

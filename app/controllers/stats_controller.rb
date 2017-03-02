@@ -145,14 +145,14 @@ class StatsController < ApplicationController
   def context_total_actions_data
     actions = Stats::TopContextsQuery.new(current_user).result
 
-    @data = Stats::PieChartData.new(actions, t('stats.spread_of_actions_for_all_context'), 70)
+    @data = Stats::PieChartData.new(actions, t('stats.spread_of_actions_for_all_context'))
 
     render :pie_chart_data, :layout => false
   end
 
   def context_running_actions_data
     actions = Stats::TopContextsQuery.new(current_user, :running => true).result
-    @data = Stats::PieChartData.new(actions, t('stats.spread_of_running_actions_for_visible_contexts'), 60)
+    @data = Stats::PieChartData.new(actions, t('stats.spread_of_running_actions_for_visible_contexts'))
 
     render :pie_chart_data, :layout => false
   end

@@ -1,0 +1,33 @@
+
+<%==
+{
+  type: "pie",
+  data: {
+    labels: @data.labels,
+    datasets: [
+      {
+        data: @data.values,
+        backgroundColor: [
+          "#d01f3c",
+          "#356aa0",
+          "#c79810",
+          "#c61fd0",
+          "#1fc6d0",
+          "#1fd076",
+          "#72d01f",
+          "#c6d01f",
+          "#d0941f",
+          "#40941f"
+        ]
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: @data.title
+    },
+    responsive: false
+  }
+}.to_json
+%>
