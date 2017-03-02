@@ -24,7 +24,7 @@ class StatsControllerTest < ActionController::TestCase
   	  actions_time_of_day_all_data
   	  actions_time_of_day_30days_data
     }.each do |action|
-      get action
+      get action, format: :json
       assert_response :success
       assert_template "stats/"+action
     end
@@ -218,7 +218,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_running_time_data
+    get :actions_running_time_data, format: :json
     assert_response :success
 
     # do not test stuff already implicitly tested in other tests
@@ -237,7 +237,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_open_per_week_data
+    get :actions_open_per_week_data, format: :json
     assert_response :success
 
     # do not test stuff already implicitly tested in other tests
@@ -257,7 +257,7 @@ class StatsControllerTest < ActionController::TestCase
     @todo_today1.save
 
     # When I get the chart data
-    get :actions_visible_running_time_data
+    get :actions_visible_running_time_data, format: :json
     assert_response :success
 
     # do not test stuff already implicitly tested in other tests
@@ -336,7 +336,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_day_of_week_all_data
+    get :actions_day_of_week_all_data, format: :json
     assert_response :success
 
     # FIXME: testdata is relative from today, so not stable to test on day_of_week
@@ -354,7 +354,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_day_of_week_30days_data
+    get :actions_day_of_week_30days_data, format: :json
     assert_response :success
 
     # FIXME: testdata is relative from today, so not stable to test on day_of_week
@@ -372,7 +372,7 @@ class StatsControllerTest < ActionController::TestCase
     given_todos_for_stats
 
     # When I get the chart data
-    get :actions_time_of_day_all_data
+    get :actions_time_of_day_all_data, format: :json
     assert_response :success
 
     # FIXME: testdata is relative from today, so not stable to test on day_of_week

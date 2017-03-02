@@ -1,0 +1,49 @@
+<%-
+time_labels         = Array.new(@count+1){ |i| "#{i}-#{i+1}" }
+time_labels[0]      = "< 1"
+-%>
+<%==
+{
+  type: "bar",
+  data: {
+    labels: time_labels,
+    datasets: [
+      {
+        data: @actions_open_per_week_array,
+        backgroundColor: "#9933cc",
+        borderColor: "#8010a0"
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: t("stats.open_per_week")
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: t("stats.open_per_week_legend.weeks")
+        }
+      }],
+      yAxes: [
+        {
+          ticks: {
+            min: 0,
+            max: 1 + @max_actions + @max_actions / 10,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: t("stats.open_per_week_legend.actions")
+          }
+        }
+      ]
+    },
+    responsive: false
+  }
+}.to_json
+%>

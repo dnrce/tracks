@@ -1,0 +1,78 @@
+<%-
+url_labels = Array.new(@count){ |i| url_for(:controller => 'stats', :action => 'show_selected_actions_from_chart', :index => i, :id=> "art") }
+url_labels[@count]=url_for(:controller => 'stats', :action => 'show_selected_actions_from_chart', :index => @count, :id=> "art_end")
+
+time_labels         = Array.new(@count){ |i| "#{i}-#{i+1}" }
+time_labels[0] = "< 1"
+time_labels[@count] = "> #{@count}"
+-%>
+<%==
+{
+  type: "bar",
+  data: {
+    labels: time_labels,
+    datasets: [
+      {
+        data: @actions_running_time_array,
+        backgroundColor: "#9933cc",
+        borderColor: "#8010a0",
+        yAxisID: "y-axis-0",
+      },
+      {
+        type: "line",
+        data: @cum_percent_done,
+        borderColor: "#ff0000",
+        borderWidth: 3,
+        pointRadius: 0,
+        yAxisID: "y-axis-1",
+        fill: false
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: t("stats.running_time_all")
+    },
+    legend: {
+      display: false
+    },
+    scales: {
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: t("stats.running_time_all_legend.running_time")
+        }
+      }],
+      yAxes: [
+        {
+          id: "y-axis-0",
+          ticks: {
+            min: 0,
+            max: 1 + @max_actions + @max_actions / 10,
+            fixedStepSize: (1 + @max_actions + @max_actions / 10) / 5.0
+          },
+          scaleLabel: {
+            display: true,
+            labelString: t("stats.running_time_all_legend.actions")
+          }
+        },
+        {
+          id: "y-axis-1",
+          position: "right",
+          ticks: {
+            min: 0,
+            max: 100,
+            fixedStepSize: 20
+          },
+          scaleLabel: {
+            display: true,
+            labelString: t("stats.running_time_all_legend.percentage")
+          }
+        }
+      ]
+    },
+    responsive: false
+  }
+}.to_json
+%>

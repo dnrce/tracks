@@ -1,0 +1,52 @@
+<%==
+{
+  type: "bar",
+  data: {
+    labels: (0..23).to_a,
+    datasets: [
+      {
+        label: t("stats.labels.created"),
+        data: @actions_creation_hour_array,
+        backgroundColor: "#9933cc",
+        borderColor: "#8010a0"
+      },
+      {
+        label: t("stats.labels.completed"),
+        data: @actions_completion_hour_array,
+        backgroundColor: "#0066cc",
+        borderColor: "#0066cc"
+      }
+    ]
+  },
+  options: {
+    title: {
+      display: true,
+      text: t("stats.tod30")
+    },
+    legend: {
+      labels: {
+        boxWidth: 10
+      }
+    },
+    scales: {
+      xAxes: [{
+        scaleLabel: {
+          display: true,
+          labelString: t("stats.tod30_legend.time_of_day")
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          min: 0,
+          max: @max + 1
+        },
+        scaleLabel: {
+          display: true,
+          labelString: t("stats.tod30_legend.number_of_actions")
+        }
+      }]
+    },
+    responsive: false
+  }
+}.to_json
+%>

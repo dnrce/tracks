@@ -98,8 +98,6 @@ class StatsController < ApplicationController
 
     # get percentage done cumulative
     @cum_percent_done = convert_to_cumulative_array(@actions_running_time_array, @actions_running_time.count )
-
-    render :layout => false
   end
 
   def actions_visible_running_time_data
@@ -127,8 +125,6 @@ class StatsController < ApplicationController
 
     # get percentage done cumulative
     @cum_percent_done = convert_to_cumulative_array(@actions_running_time_array, @actions_running_time.count )
-
-    render :layout => false
   end
 
   def actions_open_per_week_data
@@ -144,8 +140,6 @@ class StatsController < ApplicationController
     @actions_open_per_week_array = convert_to_weeks_running_from_today_array(@actions_started, @max_weeks+1)
     @actions_open_per_week_array = cut_off_array(@actions_open_per_week_array, @count)
     @max_actions = (@actions_open_per_week_array.max or 0)
-
-    render :layout => false
   end
 
   def context_total_actions_data
@@ -170,14 +164,12 @@ class StatsController < ApplicationController
     # convert to array and fill in non-existing days
     @actions_creation_day_array = Array.new(7) { |i| 0}
     @actions_creation_day.each { |t| @actions_creation_day_array[ t.created_at.wday ] += 1 }
-    @max = @actions_creation_day_array.max
 
     # convert to array and fill in non-existing days
     @actions_completion_day_array = Array.new(7) { |i| 0}
     @actions_completion_day.each { |t| @actions_completion_day_array[ t.completed_at.wday ] += 1 }
-    @max = @actions_completion_day_array.max
 
-    render :layout => false
+    @max = [@actions_creation_day_array.max, @actions_completion_day_array.max].max
   end
 
   def actions_day_of_week_30days_data
@@ -194,8 +186,6 @@ class StatsController < ApplicationController
     @actions_completion_day.each { |r| @actions_completion_day_array[r.completed_at.wday] += 1 }
 
     @max = [@actions_creation_day_array.max, @actions_completion_day_array.max].max
-
-    render :layout => false
   end
 
   def actions_time_of_day_all_data
@@ -211,8 +201,6 @@ class StatsController < ApplicationController
     @actions_completion_hour.each{|r| @actions_completion_hour_array[r.completed_at.hour] += 1 }
 
     @max = [@actions_creation_hour_array.max, @actions_completion_hour_array.max].max
-
-    render :layout => false
   end
 
   def actions_time_of_day_30days_data
@@ -228,8 +216,6 @@ class StatsController < ApplicationController
     @actions_completion_hour.each{|r| @actions_completion_hour_array[r.completed_at.hour] += 1 }
 
     @max = [@actions_creation_hour_array.max, @max = @actions_completion_hour_array.max].max
-
-    render :layout => false
   end
 
   def show_selected_actions_from_chart
